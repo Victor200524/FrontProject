@@ -1,19 +1,22 @@
-import Pagina from './componentes/layouts/pagina.jsx';
+import Pagina from './componentes/layouts/Pagina.jsx';
+import Cliente from './componentes/Cadastros/CadCliente.jsx';
+import Fornecedor from './componentes/Cadastros/CadFornecedor.jsx';
+import Produto from './componentes/Cadastros/CadProduto.jsx';
 
 function App() {
   return (
     <div className="App">
       
       <Pagina>
-        <h1>Está é a página de cadastro de Cliente</h1>
+        <Cliente/>
       </Pagina>
 
       <Pagina>
-        <h1>Está é a página de cadastro de Produto</h1>
+        <Fornecedor/>
       </Pagina>
 
       <Pagina>
-        <h1>Está é a página de cadastro do Fornecedor</h1>
+        <Produto/>
       </Pagina>
 
     </div>

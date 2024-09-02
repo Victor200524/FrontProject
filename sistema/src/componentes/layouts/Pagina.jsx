@@ -1,9 +1,7 @@
-import Cabecalho from "./cabecalho";
-import Menu from "./menu";
+import Cabecalho from "./Cabecalho";
+import Menu from "./Menu";
 
 export default function pagina(props){
-
-
 
     return(
         <>
