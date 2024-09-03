@@ -17,7 +17,7 @@ export default function Cliente(props){
             <Form>
             <Row className="mb-3">
               <Form.Group as={Col} md="4" controlId="validationCustom01">
-                <Form.Label>Nome</Form.Label>
+                <Form.Label>Nome Completo</Form.Label>
                 <Form.Control
                   required
                   type="text"
@@ -27,22 +27,22 @@ export default function Cliente(props){
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
               </Form.Group>
               <Form.Group as={Col} md="4" controlId="validationCustom02">
-                <Form.Label>CPF</Form.Label>
+                <Form.Label>Data de Nascimento</Form.Label>
                 <Form.Control
                   required
-                  type="int"
+                  type="Date"
                   placeholder="CPF"
                   defaultValue=""
                 />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
               </Form.Group>
               <Form.Group as={Col} md="4" controlId="validationCustomUsername">
-                <Form.Label>Username</Form.Label>
+                <Form.Label>E-mail</Form.Label>
                 <InputGroup hasValidation>
                   <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
                   <Form.Control
-                    type="text"
-                    placeholder="Username"
+                    type="int"
+                    placeholder="123.456.789-00"
                     aria-describedby="inputGroupPrepend"
                     required
                   />
@@ -54,7 +54,7 @@ export default function Cliente(props){
             </Row>
             <Row className="mb-3">
               <Form.Group as={Col} md="6" controlId="validationCustom03">
-                <Form.Label>City</Form.Label>
+                <Form.Label>E-mail</Form.Label>
                 <Form.Control type="text" placeholder="City" required />
                 <Form.Control.Feedback type="invalid">
                   Please provide a valid city.
