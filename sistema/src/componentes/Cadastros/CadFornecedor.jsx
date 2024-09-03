@@ -1,3 +1,4 @@
+import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
@@ -10,6 +11,7 @@ export default function Fornecedor(props){
     return(
       <div>
         <div>
+        <Container>  
             <Form>
               <h1>Cadastro de Fornecedor</h1>
               <Row className="mb-3">
@@ -62,6 +64,7 @@ export default function Fornecedor(props){
             Submit
           </Button>
           </Form>
+        </Container>
         </div>
       </div>
     );
