@@ -42,34 +42,84 @@ export default function Cliente(props){
                   <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
                   <Form.Control
                     type="int"
-                    placeholder="123.456.789-00"
+                    placeholder=""
                     aria-describedby="inputGroupPrepend"
                     required
                   />
                   <Form.Control.Feedback type="invalid">
-                    Please choose a username.
+                    Please choose a e-mail.
                   </Form.Control.Feedback>
                 </InputGroup>
               </Form.Group>
             </Row>
             <Row className="mb-3">
               <Form.Group as={Col} md="6" controlId="validationCustom03">
-                <Form.Label>E-mail</Form.Label>
-                <Form.Control type="text" placeholder="City" required />
+                <Form.Label>CPF</Form.Label>
+                <Form.Control
+                  type="int"
+                  placeholder="123.456.789-00"
+                />
                 <Form.Control.Feedback type="invalid">
                   Please provide a valid city.
                 </Form.Control.Feedback>
               </Form.Group>
               <Form.Group as={Col} md="3" controlId="validationCustom04">
-                <Form.Label>State</Form.Label>
-                <Form.Control type="text" placeholder="State" required />
+                <Form.Label>Celular</Form.Label>
+                <Form.Control 
+                  type="text" 
+                  placeholder="(99) 99999-9999" 
+                  required 
+                />
                 <Form.Control.Feedback type="invalid">
                   Please provide a valid state.
                 </Form.Control.Feedback>
               </Form.Group>
               <Form.Group as={Col} md="3" controlId="validationCustom05">
-                <Form.Label>Zip</Form.Label>
-                <Form.Control type="text" placeholder="Zip" required />
+                <Form.Label>CEP</Form.Label>
+                <Form.Control 
+                  type="text" 
+                  placeholder="12345-678" 
+                  required 
+                />
+                <Form.Control.Feedback type="invalid">
+                  Please provide a valid zip.
+                </Form.Control.Feedback>
+              </Form.Group>
+              <Form.Group as={Col} md="3" controlId="validationCustom05">
+              <Form.Label>UF</Form.Label>
+              <Form.Control 
+                as="select" // Define o tipo como um campo de seleção
+                required 
+              >
+                <option value="">Selecione o estado</option> {/* Placeholder */}
+                <option value="AC">Acre</option>
+                <option value="AL">Alagoas</option>
+                <option value="AP">Amapá</option>
+                <option value="AM">Amazonas</option>
+                <option value="BA">Bahia</option>
+                <option value="CE">Ceará</option>
+                <option value="DF">Distrito Federal</option>
+                <option value="ES">Espírito Santo</option>
+                <option value="GO">Goiás</option>
+                <option value="MA">Maranhão</option>
+                <option value="MT">Mato Grosso</option>
+                <option value="MS">Mato Grosso do Sul</option>
+                <option value="MG">Minas Gerais</option>
+                <option value="PA">Pará</option>
+                <option value="PB">Paraíba</option>
+                <option value="PR">Paraná</option>
+                <option value="PE">Pernambuco</option>
+                <option value="PI">Piauí</option>
+                <option value="RJ">Rio de Janeiro</option>
+                <option value="RN">Rio Grande do Norte</option>
+                <option value="RS">Rio Grande do Sul</option>
+                <option value="RO">Rondônia</option>
+                <option value="RR">Roraima</option>
+                <option value="SC">Santa Catarina</option>
+                <option value="SP">São Paulo</option>
+                <option value="SE">Sergipe</option>
+                <option value="TO">Tocantins</option>
+              </Form.Control>
                 <Form.Control.Feedback type="invalid">
                   Please provide a valid zip.
                 </Form.Control.Feedback>
@@ -78,7 +128,7 @@ export default function Cliente(props){
             <Form.Group className="mb-3">
               <Form.Check
                 required
-                label="Agree to terms and conditions"
+                label="Concordar com os termos e condições!"
                 feedback="You must agree before submitting."
                 feedbackType="invalid"
               />
