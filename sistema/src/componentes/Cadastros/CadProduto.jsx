@@ -13,7 +13,6 @@ export default function Produto(props){
       <div>
         <div>
           <Container>
-          <h1>Cadastro de Produto</h1>
             <Form>
             <Row className="mb-3">
               <Form.Group as={Col} md="2" controlId="validationCustom01">
@@ -114,7 +113,7 @@ export default function Produto(props){
                 feedbackType="invalid"
               />
             </Form.Group>
-            <Button type="submit">Submit form</Button>
+            <Button type="submit">Cadastrar</Button>
           </Form>
           </Container>
         </div>

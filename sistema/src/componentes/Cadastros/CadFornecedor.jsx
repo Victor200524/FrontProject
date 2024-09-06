@@ -13,7 +13,6 @@ export default function Fornecedor(props){
       <div>
         <div>
           <Container>
-          <h1>Cadastro de Fornecedor</h1>
             <Form>
             <Row className="mb-3">
               <Form.Group as={Col} md="4" controlId="validationCustom01">
@@ -150,7 +149,7 @@ export default function Fornecedor(props){
                 feedbackType="invalid"
               />
             </Form.Group>
-            <Button type="submit">Submit form</Button>
+            <Button type="submit">Cadastrar</Button>
           </Form>
           </Container>
         </div>

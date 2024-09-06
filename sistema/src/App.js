@@ -1,14 +1,30 @@
-import Pagina from './componentes/layouts/Pagina.jsx';
-import Formulario from './componentes/layouts/Formulario.jsx';
+import TelaMenu from './componentes/Telas/TelaMenu.jsx';
+import {BrowserRouter, Route, Routes} from "react-router-dom"
+import Tela404 from './componentes/Telas/Tela404.jsx';
+import TelaProduto from './componentes/Telas/TelaProduto.jsx';
+import TelaCliente from './componentes/Telas/TelaCliente.jsx';
+import TelaCategoria from './componentes/Telas/TelaCategoria.jsx';
+import TelaFornecedor from './componentes/Telas/TelaFornecedor.jsx';
 
 function App() {
   return (
     <div className="App">
-      
-      <Pagina>
-        <Formulario/>
-      </Pagina>
-
+        <>
+          <BrowserRouter> 
+              {
+                //A ordem das Rotas é importante
+              }
+              <Routes>
+                <Route path="/produto" element={<TelaProduto />}/>
+                <Route path="/cliente" element={<TelaCliente />}/>
+                <Route path="/fornecedor" element={<TelaFornecedor />}/>
+                <Route path="/categoria" element={<TelaCategoria />}/>
+                <Route path="/" element={<TelaMenu />}/>
+                <Route path="*" element={<Tela404 />}/>
+              </Routes>
+          </BrowserRouter>
+        </>
+ 
     </div>
   );
 }

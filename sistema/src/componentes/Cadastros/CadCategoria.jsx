@@ -12,7 +12,6 @@ export default function Categoria(props){
       <div>
         <div>
           <Container>
-          <h1>Cadastro de Categoria</h1>
             <Form>
             <Row className="mb-3">
               <Form.Group as={Col} md="2" controlId="validationCustom01">
@@ -42,7 +41,7 @@ export default function Categoria(props){
                 feedbackType="invalid"
               />
             </Form.Group>
-            <Button type="submit">Submit form</Button>
+            <Button type="submit">Cadastrar</Button>
           </Form>
           </Container>
         </div>
