@@ -7,7 +7,7 @@ export default function formulario(props){
 
     return(
         <>
-            <Cliente/>
+            <Categoria/>
         </>
     );
 }

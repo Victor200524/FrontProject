@@ -31,7 +31,6 @@ export default function Cliente(props){
                 <Form.Control
                   required
                   type="Date"
-                  placeholder="CPF"
                   defaultValue=""
                 />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
