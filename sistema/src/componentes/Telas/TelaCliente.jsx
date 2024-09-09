@@ -1,4 +1,4 @@
-import Cliente from "../Cadastros/CadCliente.jsx";
+import Cliente from "./Cadastros/CadCliente.jsx";
 import Pagina from "../layouts/Pagina.jsx"
 import { Container,Alert } from "react-bootstrap";
 

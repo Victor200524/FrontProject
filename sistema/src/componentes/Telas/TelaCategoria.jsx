@@ -1,5 +1,5 @@
 import { Alert, Container } from "react-bootstrap";
-import Categoria from "../Cadastros/CadCategoria.jsx";
+import Categoria from "./Cadastros/CadCategoria.jsx";
 import Pagina from "../layouts/Pagina.jsx"
 export default function TelaCategoria(props){
 

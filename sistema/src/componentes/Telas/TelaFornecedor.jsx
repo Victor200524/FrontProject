@@ -1,4 +1,4 @@
-import Fornecedor from "../Cadastros/CadFornecedor.jsx";
+import Fornecedor from "./Cadastros/CadFornecedor.jsx";
 import Pagina from "../layouts/Pagina.jsx";
 import { Container,Alert } from "react-bootstrap";
 

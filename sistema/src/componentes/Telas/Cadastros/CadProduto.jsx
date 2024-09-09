@@ -84,7 +84,7 @@ export default function Produto(props){
 
             </Row>
             <Row className="mb-3">
-              <Form.Group as={Col} md="4" controlId="validationCustom03">
+              <Form.Group as={Col} md="9" controlId="validationCustom03">
                 <Form.Label>URL da imagem</Form.Label>
                 <Form.Control
                   type="text"
@@ -113,7 +113,19 @@ export default function Produto(props){
                 feedbackType="invalid"
               />
             </Form.Group>
-            <Button type="submit">Cadastrar</Button>
+            <Row className='mt-2 mb-3'>
+                <Col md={1}>
+                  <Button variant='outline-success' type='submit'>Cadastrar</Button>
+                </Col>
+                
+                {//offset é o deslocamento
+                  }
+                <Col md={{offset:1}}> 
+                  <Button variant='outline-success' type='submit' onClick={()=>{
+                    props.setExibirTabela(true);
+                  }} >Voltar</Button>
+                </Col>
+            </Row>
           </Form>
           </Container>
         </div>
