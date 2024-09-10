@@ -1,8 +1,11 @@
-import Fornecedor from "./Cadastros/CadFornecedor.jsx";
+import CadFornecedor from "./Cadastros/CadFornecedor.jsx";
 import Pagina from "../layouts/Pagina.jsx";
 import { Container,Alert } from "react-bootstrap";
+import { useState } from "react";
+import {fornecedor} from "../../dados/mockFornecedor.js";
 
 export default function TelaFornecedor(props){
+    const[exibirTabela, setExibirTabela] = useState(true);
 
     return(
         <>
@@ -12,7 +15,9 @@ export default function TelaFornecedor(props){
                         <h1>Cadastro de Fornecedor</h1>
                     </Alert>
                 </Container>
-                <Fornecedor/>
+                {
+                    exibirTabela ? <TelaFornecedor listaDeFornecedor={fornecedor} setExibirTabela={setExibirTabela} /> : <CadFornecedor setExibirTabela={setExibirTabela}/>
+                }
             </Pagina>
         </>
         
