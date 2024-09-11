@@ -131,7 +131,19 @@ export default function Cliente(props){
                 feedbackType="invalid"
               />
             </Form.Group>
-            <Button type="submit">Cadastrar</Button>
+            <Row className='mt-2 mb-3'>
+                <Col md={1}>
+                  <Button variant='outline-success' type='submit'>Cadastrar</Button>
+                </Col>
+                
+                {//offset é o deslocamento
+                  }
+                <Col md={{offset:1}}> 
+                  <Button variant='outline-success' type='submit' onClick={()=>{
+                    props.setExibirTabela(true);
+                  }} >Voltar</Button>
+                </Col>
+            </Row>
           </Form>
           </Container>
         </div>

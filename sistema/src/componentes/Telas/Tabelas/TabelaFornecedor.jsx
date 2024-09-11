@@ -24,18 +24,17 @@ export default function TabelaFornecedor(props){
                     <tbody>
                         {
                             props.listaDeFornecedor?.map((fornecedor)=>{
-                                return
-                               ( 
-                               <tr>
-                                    <td>{fornecedor.nome}</td>
-                                    <td>{fornecedor.cnpj}</td>
-                                    <td>{fornecedor.email}</td>
-                                    <td>{fornecedor.celular}</td>
-                                    <td>{fornecedor.telefone}</td>
-                                    <td>{fornecedor.cep}</td>
-                                    <td>{fornecedor.uf}</td>
-                                    <td>{fornecedor.numero}</td>
-                                </tr>
+                                return( 
+                                <tr>
+                                        <td>{fornecedor.nome}</td>
+                                        <td>{fornecedor.cnpj}</td>
+                                        <td>{fornecedor.email}</td>
+                                        <td>{fornecedor.celular}</td>
+                                        <td>{fornecedor.telefone}</td>
+                                        <td>{fornecedor.cep}</td>
+                                        <td>{fornecedor.uf}</td>
+                                        <td>{fornecedor.numero}</td>
+                                    </tr>
                                 )
                             })
                         }
