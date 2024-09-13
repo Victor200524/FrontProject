@@ -20,7 +20,7 @@ export default function TelaProduto(props){
                     </Alert>
                 </Container>
                 {
-                    exibirTabela ? <TabelaProdutos  listaDeProdutos={produtos} setExibirTabela={setExibirTabela}/> : <CadProduto setExibirTabela={setExibirTabela}/>
+                    exibirTabela ? <TabelaProdutos  listaDeProdutos={produtos} setExibirTabela={setExibirTabela}/> : <CadProduto listaDeProdutos={produtos} setExibirTabela={setExibirTabela}/>
                 }
             </Pagina>
         </>

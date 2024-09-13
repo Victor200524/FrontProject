@@ -10,8 +10,8 @@ export default function Produto(props){
     const [produto,setProduto] = useState({
       codigo: 0,
       descricao:"",
-      precoCusto: 0,
-      precoVenda:0,
+      precoCusto: 0.00,
+      precoVenda:0.00,
       qtdEstoque:0,
       urlImagem:"",
       dataValidade:""
@@ -24,7 +24,7 @@ export default function Produto(props){
         if(form.checkValidity()){
             //Cadastro do produto
             props.listaDeProdutos.push(produto);
-
+            
             //exibir tabela com o produto incluso
             props.setExibirTabela(true);
         }
