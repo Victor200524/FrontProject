@@ -23,7 +23,7 @@ export default function Produto(props){
 
         if(form.checkValidity()){
             //Cadastro do produto
-            props.listaDeProdutos.push(produto);
+            props.setListaDeProdutos([...props.listaDeProdutos,produto]); //Array vazio esta recebendo com itens, o conteudo dessa lista espalhada, preenchendo esse novo array
             
             //exibir tabela com o produto incluso
             props.setExibirTabela(true);
@@ -34,6 +34,7 @@ export default function Produto(props){
         evento.preventDefault(); // vou querer o momento padrão da submissao
         evento.stopPropagation(); // vou querer parar o momento padrão da submissao
     }
+
     function manipularMudanca(evento){
       const elemento = evento.target.name;
       const valor = evento.target.value;
@@ -170,6 +171,12 @@ export default function Produto(props){
               />
             </Form.Group>
             <Row className='mt-2 mb-3'>
+                <Col md={1}>
+                  <Button variant='outline-success' type='submit'>Cadastrar</Button>
+                </Col>
+                <Col md={1}>
+                  <Button variant='outline-success' type='submit'>Cadastrar</Button>
+                </Col>
                 <Col md={1}>
                   <Button variant='outline-success' type='submit'>Cadastrar</Button>
                 </Col>

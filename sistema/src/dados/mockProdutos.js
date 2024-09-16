@@ -9,7 +9,7 @@ export const produtos = [
         "dataValidade":"31/12/2999"
     },
     {
-        "codigo":1,
+        "codigo":2,
         "descricao": "Blusa de Algodão",
         "precoCusto": 18.00,
         "precoVenda": 36.00,

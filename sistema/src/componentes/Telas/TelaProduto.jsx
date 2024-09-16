@@ -6,8 +6,10 @@ import CadProduto from "../Telas/Cadastros/CadProduto.jsx";
 import { produtos } from "../../dados/mockProdutos.js";
 
 export default function TelaProduto(props){
-    const [exibirTabela,setExibirTabela]=useState(true);
-
+    const [exibirTabela,setExibirTabela]= useState(true);
+    const [listaDeProdutos,setListaDeProdutos] = useState(produtos);
+    const [modoEdição,setModoEdicao] = useState(false);
+    const [produtoSelecionado,setProdutoSelecionao] = useState(false);
 
     return(
         <>
@@ -20,7 +22,12 @@ export default function TelaProduto(props){
                     </Alert>
                 </Container>
                 {
-                    exibirTabela ? <TabelaProdutos  listaDeProdutos={produtos} setExibirTabela={setExibirTabela}/> : <CadProduto listaDeProdutos={produtos} setExibirTabela={setExibirTabela}/>
+                    exibirTabela ? <TabelaProdutos  listaDeProdutos={listaDeProdutos} 
+                                                    setListaDeProdutos={setListaDeProdutos}
+                                                    setExibirTabela={setExibirTabela}/> : 
+                                    <CadProduto listaDeProdutos={listaDeProdutos}  
+                                                setListaDeProdutos={setListaDeProdutos} 
+                                                setExibirTabela={setExibirTabela}/>
                 }
             </Pagina>
         </>
