@@ -8,8 +8,8 @@ import { produtos } from "../../dados/mockProdutos.js";
 export default function TelaProduto(props){
     const [exibirTabela,setExibirTabela]= useState(true);
     const [listaDeProdutos,setListaDeProdutos] = useState(produtos);
-    const [modoEdição,setModoEdicao] = useState(false);
-    const [produtoSelecionado,setProdutoSelecionao] = useState(false);
+    const [modoEdicao,setModoEdicao] = useState(false);
+    const [produtoSelecionado,setProdutoSelecionao] = useState(null);
 
     return(
         <>
@@ -17,15 +17,19 @@ export default function TelaProduto(props){
                 <Container>
                     <Alert className="mt-02 mb-02 success text-center" variant="dark">
                         {
-                            exibirTabela ? <h1>Tabela de Produtos</h1> : <h1>Cadastro de Produtos</h1>
+                           exibirTabela ? <h1>Tabela de Produtos</h1> : <h1>{modoEdicao ? "Alterar Produto" : "Cadastrar Produto"}</h1>
                         }
                     </Alert>
                 </Container>
                 {
-                    exibirTabela ? <TabelaProdutos  listaDeProdutos={listaDeProdutos} 
+                    exibirTabela ? <TabelaProdutos listaDeProdutos={listaDeProdutos} 
+                                                    produtoSelecionado={setProdutoSelecionao}
+                                                    setModoEdicao={setModoEdicao}
                                                     setListaDeProdutos={setListaDeProdutos}
                                                     setExibirTabela={setExibirTabela}/> : 
-                                    <CadProduto listaDeProdutos={listaDeProdutos}  
+                                    <CadProduto listaDeProdutos={listaDeProdutos} 
+                                                produtoSelecionado={produtoSelecionado}
+                                                modoEdicao={modoEdicao} 
                                                 setListaDeProdutos={setListaDeProdutos} 
                                                 setExibirTabela={setExibirTabela}/>
                 }

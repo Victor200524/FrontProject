@@ -4,29 +4,58 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Row from 'react-bootstrap/Row';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function Produto(props){
-    const [produto,setProduto] = useState({
-      codigo: 0,
-      descricao:"",
-      precoCusto: 0.00,
-      precoVenda:0.00,
-      qtdEstoque:0,
-      urlImagem:"",
-      dataValidade:""
-    });
+  const [produto,setProduto] = useState({
+    codigo: 0,
+    descricao:"",
+    precoCusto: 0.00,
+    precoVenda:0.00,
+    qtdEstoque:0,
+    urlImagem:"",
+    dataValidade:""
+  });
+
+  //Quando um produto é selecionado, faço com que preencha automaticamente as lacunas com as informações dele
+  useEffect(() => {
+    if (props.modoEdicao && props.produtoSelecionado) {
+        // Se estiver no modo de edição, preenche o formulário com os dados do produto selecionado
+        setProduto(props.produtoSelecionado);
+    } else {
+        // Se não estiver no modo de edição (cadastro), limpa o formulário
+        setProduto({
+            codigo: 0,
+            descricao: "",
+            precoCusto: 0.00,
+            precoVenda: 0.00,
+            qtdEstoque: 0,
+            urlImagem: "",
+            dataValidade: ""
+        });
+    }
+}, [props.modoEdicao, props.produtoSelecionado]);
 
     const [formValidado,setFormValidado] = useState(false);
     function manipularSubmissao(evento){
+        evento.preventDefault();
         const form = evento.currentTarget;
 
         if(form.checkValidity()){
-            //Cadastro do produto
+          if(props.modoEdicao){
+            //Atualizar produto ja existente
+            const listaAtualizada = props.listaDeProdutos.map((item)=>
+              item.codigo === produto.codigo ? produto : item
+            );
+            props.setListaDeProdutos(listaAtualizada);
+          }
+          else //Cadastro do produto
             props.setListaDeProdutos([...props.listaDeProdutos,produto]); //Array vazio esta recebendo com itens, o conteudo dessa lista espalhada, preenchendo esse novo array
-            
-            //exibir tabela com o produto incluso
-            props.setExibirTabela(true);
+          
+          //exibir tabela com o produto incluso
+          props.setModoExibicao(false);
+          props.ProdutoSelecionado(false);
+          props.setExibirTabela(true);
         }
         else{
             setFormValidado(true);
@@ -38,8 +67,8 @@ export default function Produto(props){
     function manipularMudanca(evento){
       const elemento = evento.target.name;
       const valor = evento.target.value;
-      setProduto({...produto,[elemento]:valor}); // {...produto} -> é um sprad, onde ele é um espalhador, onde ele despeja o conteudo desse objeto para um novo objeto
-    }
+      setProduto({...produto,[elemento]:valor}); //{...produto} -> é um sprad, onde ele é um espalhador, onde ele despeja o conteudo desse objeto para um novo objeto
+    }  
 
     return(
       <div>
@@ -171,15 +200,11 @@ export default function Produto(props){
               />
             </Form.Group>
             <Row className='mt-2 mb-3'>
-                <Col md={1}>
-                  <Button variant='outline-success' type='submit'>Cadastrar</Button>
-                </Col>
-                <Col md={1}>
-                  <Button variant='outline-success' type='submit'>Cadastrar</Button>
-                </Col>
-                <Col md={1}>
-                  <Button variant='outline-success' type='submit'>Cadastrar</Button>
-                </Col>
+              <Col md={1}>
+                  <Button variant='outline-success' type='submit'>
+                    {props.modoEdicao ? "Salvar Alterações" : "Cadastrar"}
+                  </Button>
+              </Col>
                 
                 {//offset é o deslocamento
                   }
