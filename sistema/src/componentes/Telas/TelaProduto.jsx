@@ -9,7 +9,7 @@ export default function TelaProduto(props){
     const [exibirTabela,setExibirTabela]= useState(true);
     const [listaDeProdutos,setListaDeProdutos] = useState(produtos);
     const [modoEdicao,setModoEdicao] = useState(false);
-    const [produtoSelecionado,setProdutoSelecionao] = useState(null);
+    const [produtoSelecionado,setProdutoSelecionado] = useState(false);
 
     return(
         <>
@@ -23,7 +23,7 @@ export default function TelaProduto(props){
                 </Container>
                 {
                     exibirTabela ? <TabelaProdutos listaDeProdutos={listaDeProdutos} 
-                                                    produtoSelecionado={setProdutoSelecionao}
+                                                    setProdutoSelecionado={setProdutoSelecionado}
                                                     setModoEdicao={setModoEdicao}
                                                     setListaDeProdutos={setListaDeProdutos}
                                                     setExibirTabela={setExibirTabela}/> : 

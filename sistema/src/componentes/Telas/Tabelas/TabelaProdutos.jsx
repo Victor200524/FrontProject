@@ -20,7 +20,7 @@ export default function TabelaProdutos(props){
     }
 
     function alterarProduto(produto){
-        props.produtoSelecionado(produto); // Passa o produto para a edição
+        props.setProdutoSelecionado(produto); // Passa o produto para a edição
         props.setModoEdicao(true); // Ativa o modo de edição
         props.setExibirTabela(false); // Vai para a tela de cadastro/edição
     }        
@@ -31,6 +31,7 @@ export default function TabelaProdutos(props){
             <Container>
                 <Button className="mb-3" variant="primary" onClick={()=>{
                     props.setExibirTabela(false);
+                    props.setModoEdicao(false);
                 }}>
                     Adicionar 
                 </Button>

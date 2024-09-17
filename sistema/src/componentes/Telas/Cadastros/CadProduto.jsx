@@ -22,19 +22,8 @@ export default function Produto(props){
     if (props.modoEdicao && props.produtoSelecionado) {
         // Se estiver no modo de edição, preenche o formulário com os dados do produto selecionado
         setProduto(props.produtoSelecionado);
-    } else {
-        // Se não estiver no modo de edição (cadastro), limpa o formulário
-        setProduto({
-            codigo: 0,
-            descricao: "",
-            precoCusto: 0.00,
-            precoVenda: 0.00,
-            qtdEstoque: 0,
-            urlImagem: "",
-            dataValidade: ""
-        });
-    }
-}, [props.modoEdicao, props.produtoSelecionado]);
+    } 
+    }, [props.modoEdicao, props.produtoSelecionado]);
 
     const [formValidado,setFormValidado] = useState(false);
     function manipularSubmissao(evento){
@@ -53,8 +42,8 @@ export default function Produto(props){
             props.setListaDeProdutos([...props.listaDeProdutos,produto]); //Array vazio esta recebendo com itens, o conteudo dessa lista espalhada, preenchendo esse novo array
           
           //exibir tabela com o produto incluso
-          props.setModoExibicao(false);
-          props.ProdutoSelecionado(false);
+          props.setListaDeProdutos(true);
+          props.produtoSelecionado(false);
           props.setExibirTabela(true);
         }
         else{
