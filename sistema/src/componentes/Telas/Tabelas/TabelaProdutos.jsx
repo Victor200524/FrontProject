@@ -32,6 +32,7 @@ export default function TabelaProdutos(props){
                 <Button className="mb-3" variant="primary" onClick={()=>{
                     props.setExibirTabela(false);
                     props.setModoEdicao(false);
+                    props.setProdutoSelecionado(false);
                 }}>
                     Adicionar 
                 </Button>

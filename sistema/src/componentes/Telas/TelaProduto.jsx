@@ -7,7 +7,7 @@ import { produtos } from "../../dados/mockProdutos.js";
 
 export default function TelaProduto(props){
     const [exibirTabela,setExibirTabela]= useState(true);
-    const [listaDeProdutos,setListaDeProdutos] = useState(produtos);
+    const [listaDeProdutos,setListaDeProdutos] =useState(produtos);
     const [modoEdicao,setModoEdicao] = useState(false);
     const [produtoSelecionado,setProdutoSelecionado] = useState(false);
 
@@ -30,6 +30,7 @@ export default function TelaProduto(props){
                                     <CadProduto listaDeProdutos={listaDeProdutos} 
                                                 produtoSelecionado={produtoSelecionado}
                                                 modoEdicao={modoEdicao} 
+                                                setModoEdicao={setModoEdicao}
                                                 setListaDeProdutos={setListaDeProdutos} 
                                                 setExibirTabela={setExibirTabela}/>
                 }

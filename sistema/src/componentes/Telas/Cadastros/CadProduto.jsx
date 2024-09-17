@@ -19,7 +19,7 @@ export default function Produto(props){
 
   //Quando um produto é selecionado, faço com que preencha automaticamente as lacunas com as informações dele
   useEffect(() => {
-    if (props.modoEdicao && props.produtoSelecionado) {
+    if (props.modoEdicao) {
         // Se estiver no modo de edição, preenche o formulário com os dados do produto selecionado
         setProduto(props.produtoSelecionado);
     } 
@@ -27,28 +27,27 @@ export default function Produto(props){
 
     const [formValidado,setFormValidado] = useState(false);
     function manipularSubmissao(evento){
-        evento.preventDefault();
         const form = evento.currentTarget;
 
         if(form.checkValidity()){
           if(props.modoEdicao){
             //Atualizar produto ja existente
-            const listaAtualizada = props.listaDeProdutos.map((item)=>
-              item.codigo === produto.codigo ? produto : item
-            );
+            const listaAtualizada = props.listaDeProdutos.filter((item)=>{
+              return item.codigo == produto.codigo ? produto : item
+            });
+            console.log(listaAtualizada);
             props.setListaDeProdutos(listaAtualizada);
+            props.setModoEdicao(false);
           }
           else //Cadastro do produto
             props.setListaDeProdutos([...props.listaDeProdutos,produto]); //Array vazio esta recebendo com itens, o conteudo dessa lista espalhada, preenchendo esse novo array
           
           //exibir tabela com o produto incluso
-          props.setListaDeProdutos(true);
-          props.produtoSelecionado(false);
           props.setExibirTabela(true);
         }
-        else{
-            setFormValidado(true);
-        }
+        else
+            setFormValidado(false);
+        
         evento.preventDefault(); // vou querer o momento padrão da submissao
         evento.stopPropagation(); // vou querer parar o momento padrão da submissao
     }
