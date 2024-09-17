@@ -32,10 +32,9 @@ export default function Produto(props){
         if(form.checkValidity()){
           if(props.modoEdicao){
             //Atualizar produto ja existente
-            const listaAtualizada = props.listaDeProdutos.filter((item)=>{
+            const listaAtualizada = props.listaDeProdutos.map((item)=>{
               return item.codigo == produto.codigo ? produto : item
             });
-            console.log(listaAtualizada);
             props.setListaDeProdutos(listaAtualizada);
             props.setModoEdicao(false);
           }
