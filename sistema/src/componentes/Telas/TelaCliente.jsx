@@ -7,6 +7,10 @@ import { clientes } from "../../dados/mockCliente.js"
 
 export default function TelaCliente(props){
     const [exibirTabela,setExibirTabela] = useState(true);
+    const[listaDeCliente,setListaDeCliente] = useState(clientes);
+    const[modoEdicao,setModoEdicao] = useState(false);
+    const[clienteSelecionado,setClienteSelecionado] = useState(false);
+
     return(
         <>
             <Pagina>
@@ -18,7 +22,17 @@ export default function TelaCliente(props){
                     </Alert>
                 </Container>
                 {
-                    exibirTabela ? <TabelaCliente listaDeClientes={clientes} setExibirTabela={setExibirTabela}/> : <CadCliente setExibirTabela={setExibirTabela}/>
+                    exibirTabela ?  <TabelaCliente listaDeClientes={clientes} 
+                                                    setClienteSelecionado = {setClienteSelecionado}
+                                                    setModoEdicao = {setModoEdicao}
+                                                    setListaDeCliente = {setListaDeCliente}
+                                                    setExibirTabela={setExibirTabela}/> : 
+                                    <CadCliente listaDeCliente = {listaDeCliente}
+                                                clienteSelecionado = {clienteSelecionado}
+                                                modoEdicao = {modoEdicao}
+                                                setModoEdicao = {setModoEdicao}
+                                                setListaDeCliente = {setListaDeCliente}
+                                                setExibirTabela={setExibirTabela}/>
                 }
             </Pagina>
         </>

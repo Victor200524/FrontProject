@@ -5,7 +5,7 @@ export default function pagina(props){
 
     return(
         <>
-            <Cabecalho titulo="Sistema de Controle Gerencial" />
+            <Cabecalho/>
             <Menu/>{ //FILHOS DAS PAGINAS ABAIXO
                 props.children
             }

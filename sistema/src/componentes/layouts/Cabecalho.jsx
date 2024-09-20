@@ -3,9 +3,9 @@ import { Alert } from "react-bootstrap";
 export default function Cabecalho(props){
     //método render
     return(
-        <Alert className={"text-center"} variant="dark">
+        <Alert className={" text-center"} variant="dark">
             
-            {props.titulo || "Titutlo não fornecido"}
+            <h1>Sistema de Controle Gerencial</h1>
         
         </Alert>
     );

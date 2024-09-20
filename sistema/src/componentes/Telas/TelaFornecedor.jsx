@@ -7,7 +7,9 @@ import TabelaFornecedor from "./Tabelas/TabelaFornecedor.jsx";
 
 export default function TelaFornecedor(props){
     const[exibirTabela, setExibirTabela] = useState(true);
-
+    const[listaDeFornecedor,setListaDeFornecedor] = useState(fornecedores);
+    const[modoEdicao,setModoEdicao] = useState(false);
+    const[fornecedorSelecionado,setFornecedorSelecionado] = useState(false);
     return(
         <>
             <Pagina>
@@ -17,7 +19,17 @@ export default function TelaFornecedor(props){
                     </Alert>
                 </Container>
                 {
-                    exibirTabela ? <TabelaFornecedor listaDeFornecedor={fornecedores} setExibirTabela={setExibirTabela} /> : <CadFornecedor setExibirTabela={setExibirTabela}/>
+                    exibirTabela ?  <TabelaFornecedor   listaDeFornecedor={fornecedores} 
+                                                        setFornecedorSelecionado = {setFornecedorSelecionado}
+                                                        setModoEdicao={setModoEdicao}
+                                                        setListaDeFornecedor={setListaDeFornecedor}
+                                                        setExibirTabela={setExibirTabela} /> : 
+                                    <CadFornecedor  listaDeFornecedor = {listaDeFornecedor}
+                                                    fornecedorSelecionado = {fornecedorSelecionado}
+                                                    modoEdicao = {modoEdicao}
+                                                    setModoEdicao = {setModoEdicao}
+                                                    setListaDeFornecedor = {setListaDeFornecedor}
+                                                    setExibirTabela={setExibirTabela}/>
                 }
             </Pagina>
         </>

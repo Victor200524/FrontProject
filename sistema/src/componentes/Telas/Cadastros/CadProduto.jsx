@@ -33,7 +33,7 @@ export default function Produto(props){
           if(props.modoEdicao){
             //Atualizar produto ja existente
             const listaAtualizada = props.listaDeProdutos.map((item)=>{
-              return item.codigo == produto.codigo ? produto : item
+              return item.codigo === produto.codigo ? produto : item
             });
             props.setListaDeProdutos(listaAtualizada);
             props.setModoEdicao(false);
@@ -67,6 +67,7 @@ export default function Produto(props){
                 <Form.Label>Código</Form.Label>
                 <Form.Control
                   required
+                  disabled={props.modoEdicao} // Faz com que bloqueie o codigo, para não ser alterado
                   id = "codigo"
                   name = "codigo"
                   type="int"
