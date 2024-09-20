@@ -20,7 +20,7 @@ export default function Categoria(props){
   function manipularSubmissao(evento){
     const form = evento.currentTarget;
 
-    if(form.checkValidaty()){
+    if(form.checkValidity()){
       if(props.modoEdicao){
         const listaAtualizada = props.listaDeCategoria.map((item)=>{
           return item.nome === categoria.nome ? categoria : item
@@ -29,7 +29,7 @@ export default function Categoria(props){
         props.setModoEdicao(false);
       }
       else  
-        props.setListaDeCategoria([...props.listaCategoria,categoria]);
+        props.setListaDeCategoria([...props.listaDeCategoria,categoria]);
     
       props.setExibirTabela(true)
     }
