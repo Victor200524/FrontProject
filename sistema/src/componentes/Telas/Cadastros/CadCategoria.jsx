@@ -7,6 +7,7 @@ import Row from 'react-bootstrap/Row';
 
 export default function Categoria(props){
   const [categoria,setCategoria] = useState({
+    id: 0,
     nome: "",
     tipo:""
   });
@@ -17,13 +18,14 @@ export default function Categoria(props){
   },[props.modoEdicao, props.categoriaSelecionada]);
 
   const[formValidado,setFormValidado] = useState(false);
+
   function manipularSubmissao(evento){
     const form = evento.currentTarget;
 
     if(form.checkValidity()){
       if(props.modoEdicao){
         const listaAtualizada = props.listaDeCategoria.map((item)=>{
-          return item.nome === categoria.nome ? categoria : item
+          return item.id === categoria.id ? categoria : item
         });
         props.setListaDeCategoria(listaAtualizada);
         props.setModoEdicao(false);
@@ -52,6 +54,20 @@ export default function Categoria(props){
           <Container>
             <Form noValidate validated={formValidado} onSubmit={manipularSubmissao}>
             <Row className="mb-3">
+            <Form.Group as={Col} md="2">
+                <Form.Label>Codigo</Form.Label>
+                <Form.Control
+                  disabled={props.modoEdicao}
+                  required
+                  type="text"
+                  id = "id"
+                  name = "id"
+                  value = {categoria.id}
+                  onChange = {manipularMudanca}
+                />
+                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+              </Form.Group>
+
               <Form.Group as={Col} md="2">
                 <Form.Label>Nome</Form.Label>
                 <Form.Control

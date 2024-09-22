@@ -21,9 +21,10 @@ export default function Fornecedor(props){
   useEffect(()=>{
     if(props.modoEdicao)
       setFornecedor(props.fornecedorSelecionado);
-  },[props.modoEdicao, props.fornecedorSelecionado]);
+  }, [props.modoEdicao, props.fornecedorSelecionado]);
 
   const [formValidado,setFormValidado] = useState(false);
+  
   function manipularSubmissao(evento){
     const form = evento.currentTarget;
 
@@ -36,7 +37,9 @@ export default function Fornecedor(props){
         props.setModoEdicao(false);
       }
       else
-        props.setListaDeFornecedor([...props,setListaDeFornecedor,fornecedor]);
+        props.setListaDeFornecedor([...props.listaDeFornecedor,fornecedor]);
+    
+      props.setExibirTabela(true);
     }
     else
       setFormValidado(false);
@@ -44,6 +47,7 @@ export default function Fornecedor(props){
     evento.preventDefault();
     evento.stopPropagation();
   }
+  
   function manipularMudanca(evento){
     const elemento = evento.target.name;
     const valor = evento.target.value;
@@ -54,7 +58,7 @@ export default function Fornecedor(props){
       <div>
         <div>
           <Container>
-            <Form noValidate validated={formValidado} onSubmit={manipularSubmissao}>
+            <Form noValidate validated = {formValidado} onSubmit={manipularSubmissao}>
             <Row className="mb-3">
               <Form.Group as={Col} md="4">
                 <Form.Label>Nome Completo</Form.Label>
@@ -204,7 +208,7 @@ export default function Fornecedor(props){
                   required 
                   id = "numero"
                   name = "numero"
-                  value = {fornecedor.name}
+                  value = {fornecedor.numero}
                   onChange = {manipularMudanca}
                 />
                 <Form.Control.Feedback type="invalid">

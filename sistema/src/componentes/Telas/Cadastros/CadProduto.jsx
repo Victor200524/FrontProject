@@ -26,6 +26,7 @@ export default function Produto(props){
     }, [props.modoEdicao, props.produtoSelecionado]);
 
     const [formValidado,setFormValidado] = useState(false);
+    
     function manipularSubmissao(evento){
         const form = evento.currentTarget;
 

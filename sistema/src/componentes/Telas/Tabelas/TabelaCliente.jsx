@@ -4,7 +4,7 @@ import { Button, Container, Table } from "react-bootstrap";
 export default function TabelaCliente(props){
     function excluirCliente(clientes){
         if(window.confirm("Deseja realmente excluir o cliente " + clientes.nome)){
-            props.setListaDeCliente(props.listaDeClientes.filter((item)=>{
+            props.setListaDeCliente(props.listaDeCliente.filter((item)=>{
                 return item.cpf !== clientes.cpf
             }));
         }
@@ -27,7 +27,7 @@ export default function TabelaCliente(props){
                     props.setModoEdicao(false);
                     props.setClienteSelecionado(false);
                 }}> Adicionar</Button>
-                <Table>
+                <Table striped bordered hover>
                     <thead>
                         <th>Nome</th>
                         <th>Data de Nascimento</th>
@@ -39,7 +39,7 @@ export default function TabelaCliente(props){
                     </thead>
                     <tbody>
                         {
-                            props.listaDeClientes?.map((clientes)=>{
+                            props.listaDeCliente?.map((clientes)=>{
                                 return(
                                     <tr>
                                         <td>{clientes.nome}</td>

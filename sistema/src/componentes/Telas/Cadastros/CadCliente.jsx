@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
@@ -19,26 +19,31 @@ export default function Cliente(props){
 
   useEffect(() => {
     if (props.modoEdicao) 
-        setProduto(props.clienteSelecionado)
+        setCliente(props.clienteSelecionado);
+
     }, [props.modoEdicao, props.clienteSelecionado]);
-  const[formvalidado, setFormvalidado] = useState(false);
+
+  const[formValidado,setFormValidado] = useState(false);
+
   function manipularSubmissao(evento){
-    const form = evento.currentTargget;
-    if(form.checkValidaty()){
+    const form = evento.currentTarget;
+
+    if(form.checkValidity()){
       if(props.modoEdicao){
         const listaAtualizada = props.listaDeCliente.map((item)=>{
-          return item.cpf === cliente.cpf ? cliete : item
-        })
+          return item.cpf === cliente.cpf ? cliente : item
+        });
         props.setListaDeCliente(listaAtualizada);
         props.setModoEdicao(false);
       }
       else
-        props.setListaDeCliente([...props,listaDeCliente,cliente]);
+        props.setListaDeCliente([...props.listaDeCliente,cliente]);
       
-        props.setExibirTabela(true);
+      props.setExibirTabela(true);
       }
     else
       setFormValidado(false);
+
     evento.preventDefault();
     evento.stopPropagation();
   }

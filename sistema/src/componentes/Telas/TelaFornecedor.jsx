@@ -6,7 +6,7 @@ import { fornecedores } from "../../dados/mockFornecedor.js";
 import TabelaFornecedor from "./Tabelas/TabelaFornecedor.jsx";
 
 export default function TelaFornecedor(props){
-    const[exibirTabela, setExibirTabela] = useState(true);
+    const[exibirTabela,setExibirTabela] = useState(true);
     const[listaDeFornecedor,setListaDeFornecedor] = useState(fornecedores);
     const[modoEdicao,setModoEdicao] = useState(false);
     const[fornecedorSelecionado,setFornecedorSelecionado] = useState(false);
@@ -15,11 +15,11 @@ export default function TelaFornecedor(props){
             <Pagina>
                 <Container>
                     <Alert className="mt-02 mb-02 success text-center" variant="dark">
-                        {exibirTabela ? <h1>Tabela de Fornecedores</h1> : <h1>Cadastro de Fornecedor</h1>}
+                        {exibirTabela ? <h1>Tabela de Fornecedores</h1> : <h1>{modoEdicao ? "Alterar Fornecedor" : "Cadastrar Fornecedor"}</h1>}
                     </Alert>
                 </Container>
                 {
-                    exibirTabela ?  <TabelaFornecedor   listaDeFornecedor={fornecedores} 
+                    exibirTabela ?  <TabelaFornecedor   listaDeFornecedor={listaDeFornecedor} 
                                                         setFornecedorSelecionado = {setFornecedorSelecionado}
                                                         setModoEdicao={setModoEdicao}
                                                         setListaDeFornecedor={setListaDeFornecedor}

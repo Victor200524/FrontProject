@@ -4,11 +4,13 @@ import Pagina from "../layouts/Pagina.jsx"
 import { useState } from "react";
 import TabelaCategoria from "./Tabelas/TabelaCategoria.jsx";
 import { categorias } from "../../dados/mockCategoria.js";
+
 export default function TelaCategoria(props){
     const [exibirTabela,setExibirTabela] = useState(true);
     const [listaDeCategoria,setListaDeCategoria] = useState(categorias)
     const [modoEdicao,setModoEdicao] = useState(false);
     const [categoriaSelecionada,setCategoriaSelecionada] = useState(false);
+    
     return(
         <>
             <Pagina>
@@ -20,7 +22,7 @@ export default function TelaCategoria(props){
                     </Alert>
                 </Container>
                 {
-                    exibirTabela ? <TabelaCategoria listaDeCategoria={categorias} 
+                    exibirTabela ? <TabelaCategoria listaDeCategoria={listaDeCategoria} 
                                                     setCategoriaSelecionada = {setCategoriaSelecionada}
                                                     setModoEdicao = {setModoEdicao}
                                                     setListaDeCategoria = {setListaDeCategoria}

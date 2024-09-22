@@ -24,6 +24,7 @@ export default function TabelaCategoria(props){
                 }}> Adicionar </Button>
                 <Table striped bordered hover>
                     <thead>
+                        <th>Codigo</th>
                         <th>Nome</th>
                         <th>Tipo</th>
                     </thead>
@@ -32,6 +33,7 @@ export default function TabelaCategoria(props){
                             props.listaDeCategoria?.map((categoria)=>{
                                 return(
                                     <tr>
+                                        <td>{categoria.id}</td>
                                         <td>{categoria.nome}</td>
                                         <td>{categoria.tipo}</td>
                                         <td>
