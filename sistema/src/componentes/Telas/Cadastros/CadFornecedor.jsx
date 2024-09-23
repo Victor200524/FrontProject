@@ -59,53 +59,59 @@ export default function Fornecedor(props){
         <div>
           <Container>
             <Form noValidate validated = {formValidado} onSubmit={manipularSubmissao}>
-            <Row className="mb-3">
-              <Form.Group as={Col} md="4">
-                <Form.Label>Nome Completo</Form.Label>
-                <Form.Control
-                  required
-                  id = "nome"
-                  name = "nome"
-                  type="text"
-                  value={fornecedor.nome}
-                  placeholder="Nome"
-                  onChange={manipularMudanca}
-                />
-                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-              </Form.Group>
 
-              <Form.Group as={Col} md="4">
-                <Form.Label>CNPJ</Form.Label>
-                <Form.Control
-                  required
-                  type="text"
-                  id = "cnpj"
-                  name = "cnpj"
-                  value = {fornecedor.cnpj}
-                  onChange={manipularMudanca}
-                  placeholder='12.345.678/0001-00'
-                />
-                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-              </Form.Group>
+              <Row className="mb-3">
 
-              <Form.Group as={Col} md="4">
-                <Form.Label>E-mail profissional</Form.Label>
-                <InputGroup hasValidation>
-                  <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
+                <Form.Group as={Col} md="4">
+                  <Form.Label>Nome Completo</Form.Label>
+                  <Form.Control
+                    required
+                    id = "nome"
+                    name = "nome"
+                    type="text"
+                    value={fornecedor.nome}
+                    placeholder="Nome"
+                    onChange={manipularMudanca}
+                  />
+                  <Form.Control.Feedback type='invalid'>Nome Invalido</Form.Control.Feedback>
+                  <Form.Control.Feedback type='valid'>Nome Valido</Form.Control.Feedback>
+                </Form.Group>
+
+                <Form.Group as={Col} md="4">
+                  <Form.Label>CNPJ</Form.Label>
                   <Form.Control
                     required
                     type="text"
-                    id = "email"
-                    name = "email"
-                    value = {fornecedor.email}
-                    onChange = {manipularMudanca}
+                    id = "cnpj"
+                    name = "cnpj"
+                    value = {fornecedor.cnpj}
+                    onChange={manipularMudanca}
+                    placeholder='12.345.678/0001-00'
                   />
-                  <Form.Control.Feedback type="invalid">
-                    Please choose a e-mail.
-                  </Form.Control.Feedback>
-                </InputGroup>
-              </Form.Group>
-            </Row>
+                  <Form.Control.Feedback type='invalid'>CNPJ Invalido</Form.Control.Feedback>
+                  <Form.Control.Feedback type='valid'>CNPJ Valido</Form.Control.Feedback>
+                </Form.Group>
+
+                <Form.Group as={Col} md="4">
+                  <Form.Label>E-mail profissional</Form.Label>
+                  <InputGroup hasValidation>
+                    <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
+                    <Form.Control
+                      required
+                      type="text"
+                      id = "email"
+                      name = "email"
+                      value = {fornecedor.email}
+                      onChange = {manipularMudanca}
+                    />
+                    <Form.Control.Feedback type='invalid'>E-mail Invalido</Form.Control.Feedback>
+                    <Form.Control.Feedback type='valid'>E-mail Valido</Form.Control.Feedback>
+                  </InputGroup>
+                
+                </Form.Group>
+
+              </Row>
+            
             <Row className="mb-3">
               
               <Form.Group as={Col} md="3">
@@ -119,9 +125,8 @@ export default function Fornecedor(props){
                   value = {fornecedor.celular}
                   onChange = {manipularMudanca}
                 />
-                <Form.Control.Feedback type="invalid">
-                  Please provide a valid city.
-                </Form.Control.Feedback>
+                <Form.Control.Feedback type='invalid'>Celular Invalido</Form.Control.Feedback>
+                <Form.Control.Feedback type='valid'>Celular Valido</Form.Control.Feedback>
               </Form.Group>
 
               <Form.Group as={Col} md="3">
@@ -135,9 +140,8 @@ export default function Fornecedor(props){
                   value = {fornecedor.telefone}
                   onChange = {manipularMudanca}
                 />
-                <Form.Control.Feedback type="invalid">
-                  Please provide a valid state.
-                </Form.Control.Feedback>
+                <Form.Control.Feedback type='invalid'>Telefone Invalido</Form.Control.Feedback>
+                <Form.Control.Feedback type='valid'>Telefone Valido</Form.Control.Feedback>
               </Form.Group>
 
               <Form.Group as={Col} md="3">
@@ -151,9 +155,8 @@ export default function Fornecedor(props){
                   value = {fornecedor.cep}
                   onChange = {manipularMudanca}
                 />
-                <Form.Control.Feedback type="invalid">
-                  Please provide a valid zip.
-                </Form.Control.Feedback>
+                <Form.Control.Feedback type='invalid'>CEP Invalido</Form.Control.Feedback>
+                <Form.Control.Feedback type='valid'>CEP Valido</Form.Control.Feedback>
               </Form.Group>
 
               <Form.Group as={Col} md="3">
@@ -196,9 +199,8 @@ export default function Fornecedor(props){
                 <option value="SE">Sergipe</option>
                 <option value="TO">Tocantins</option>
               </Form.Control>
-                <Form.Control.Feedback type="invalid">
-                  Please provide a valid zip.
-                </Form.Control.Feedback>
+                <Form.Control.Feedback type='invalid'>Selecione o seu Estado!</Form.Control.Feedback>
+                <Form.Control.Feedback type='valid'>Estado Valido</Form.Control.Feedback>
               </Form.Group>
 
               <Form.Group as={Col} md="3">
@@ -211,9 +213,8 @@ export default function Fornecedor(props){
                   value = {fornecedor.numero}
                   onChange = {manipularMudanca}
                 />
-                <Form.Control.Feedback type="invalid">
-                  Please provide a valid zip.
-                </Form.Control.Feedback>
+                <Form.Control.Feedback type='invalid'>Numero Invalido</Form.Control.Feedback>
+                <Form.Control.Feedback type='valid'>Numero Valido</Form.Control.Feedback>
               </Form.Group>
 
             </Row>
@@ -221,7 +222,7 @@ export default function Fornecedor(props){
               <Form.Check
                 required
                 label="Concordar com os termos e condições!"
-                feedback="You must agree before submitting."
+                feedback="Você deve concocordar antes de enviar!"
                 feedbackType="invalid"
               />
             </Form.Group>

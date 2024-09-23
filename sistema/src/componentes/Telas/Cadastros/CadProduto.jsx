@@ -38,6 +38,25 @@ export default function Produto(props){
             });
             props.setListaDeProdutos(listaAtualizada);
             props.setModoEdicao(false);
+            
+            // OUUU
+
+            /*
+              props.setListaDeProdutos(props.listaDeProdutos.map((item)=>{
+                 return item.codigo === produto.codigo ? produto : item
+                }); 
+
+              props.setProdutoSelecionado({
+                codigo: 0,
+                descricao:"",
+                precoCusto: 0.00,
+                precoVenda:0.00,
+                qtdEstoque:0,
+                urlImagem:"",
+                dataValidade:""
+              });
+            */
+
           }
           else //Cadastro do produto
             props.setListaDeProdutos([...props.listaDeProdutos,produto]); //Array vazio esta recebendo com itens, o conteudo dessa lista espalhada, preenchendo esse novo array
@@ -63,95 +82,102 @@ export default function Produto(props){
         <div>
           <Container>
             <Form noValidate validated={formValidado} onSubmit={manipularSubmissao}>
-            <Row className="mb-3">
-              <Form.Group as={Col} md="2" >
-                <Form.Label>Código</Form.Label>
-                <Form.Control
-                  required
-                  disabled={props.modoEdicao} // Faz com que bloqueie o codigo, para não ser alterado
-                  id = "codigo"
-                  name = "codigo"
-                  type="int"
-                  value={produto.codigo}
-                  onChange={manipularMudanca}
-                />
-                <Form.Control.Feedback type='invalid'>Código Invalido</Form.Control.Feedback>
-                <Form.Control.Feedback type='valid'>Looks good!</Form.Control.Feedback>
-              </Form.Group>
 
-              <Form.Group as={Col} md="4">
-                <Form.Label>Descrição</Form.Label>
-                <Form.Control
-                  required
-                  type="text"
-                  id = "descricao"
-                  name = "descricao"
-                  value={produto.descricao}
-                  onChange={manipularMudanca}
-                />
-                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-              </Form.Group>
+              <Row className="mb-3">
 
-              <Form.Group as={Col} md="2" >
-                <Form.Label>Preço de Custo</Form.Label>
-                <InputGroup hasValidation>
-                  <InputGroup.Text id="inputGroupPrepend">R$</InputGroup.Text>
+                <Form.Group as={Col} md="2" >
+                  <Form.Label>Código</Form.Label>
                   <Form.Control
-                    type="double"
-                    aria-describedby="inputGroupPrepend"
                     required
-                    id = "precoCusto"
-                    name = "precoCusto"
-                    value={produto.precoCusto}
-                    onChange={manipularMudanca}
-                  />
-                  <Form.Control.Feedback type="invalid">
-                    Please choose a e-mail.
-                  </Form.Control.Feedback>
-                </InputGroup>
-              </Form.Group>
-
-              <Form.Group as={Col} md="2">
-                <Form.Label>Preço de de Venda</Form.Label>
-                <InputGroup hasValidation>
-                  <InputGroup.Text id="inputGroupPrepend">R$</InputGroup.Text>
-                  <Form.Control
-                    type="double"
-                    id = "precoVenda"
-                    name = "precoVenda"
-                    value={produto.precoVenda}
-                    onChange={manipularMudanca}
-                    required
-                  />
-                  <Form.Control.Feedback type="invalid">
-                    Please choose a e-mail.
-                  </Form.Control.Feedback>
-                </InputGroup>
-              </Form.Group>
-
-              <Form.Group as={Col} md="2">
-                <Form.Label>Estoque</Form.Label>
-                <InputGroup hasValidation>
-                  <InputGroup.Text id="inputGroupPrepend">+</InputGroup.Text>
-                  <Form.Control
+                    disabled={props.modoEdicao} // Faz com que bloqueie o codigo, para não ser alterado
+                    id = "codigo"
+                    name = "codigo"
                     type="int"
-                    aria-describedby="inputGroupPrepend"
-                    required
-                    id = "qtdEstoque"
-                    name = "qtdEstoque"
-                    value={produto.qtdEstoque}
+                    value={produto.codigo}
                     onChange={manipularMudanca}
                   />
-                  <Form.Control.Feedback type="invalid">
-                    Please choose a e-mail.
-                  </Form.Control.Feedback>
-                </InputGroup>
-              </Form.Group>
+                  <Form.Control.Feedback type='invalid'>Código Invalido</Form.Control.Feedback>
+                  <Form.Control.Feedback type='valid'>Codigo Valido</Form.Control.Feedback>
+                </Form.Group>
 
-            </Row>
+                <Form.Group as={Col} md="4">
+                  <Form.Label>Descrição</Form.Label>
+                  <Form.Control
+                    required
+                    type="text"
+                    id = "descricao"
+                    name = "descricao"
+                    value={produto.descricao}
+                    onChange={manipularMudanca}
+                  />
+                <Form.Control.Feedback type='invalid'>Descrição Invalido</Form.Control.Feedback>
+                <Form.Control.Feedback type='valid'>Descrição Valida</Form.Control.Feedback>
+                </Form.Group>
+
+                <Form.Group as={Col} md="2" >
+                  <Form.Label>Preço de Custo</Form.Label>
+                  <InputGroup hasValidation>
+                    <InputGroup.Text id="inputGroupPrepend">R$</InputGroup.Text>
+                    <Form.Control
+                      type="double"
+                      aria-describedby="inputGroupPrepend"
+                      required
+                      id = "precoCusto"
+                      name = "precoCusto"
+                      value={produto.precoCusto}
+                      onChange={manipularMudanca}
+                    />
+                    <Form.Control.Feedback type='invalid'>Preço de Custo Invalido</Form.Control.Feedback>
+                    <Form.Control.Feedback type='valid'>Preço de Custo Valido</Form.Control.Feedback>
+                  </InputGroup>
+                </Form.Group>
+
+                <Form.Group as={Col} md="2">
+                  <Form.Label>Preço de de Venda</Form.Label>
+                  <InputGroup hasValidation>
+                    <InputGroup.Text id="inputGroupPrepend">R$</InputGroup.Text>
+                    <Form.Control
+                      type="double"
+                      id = "precoVenda"
+                      name = "precoVenda"
+                      value={produto.precoVenda}
+                      onChange={manipularMudanca}
+                      required
+                    />
+                    <Form.Control.Feedback type="invalid">
+                      Please choose a e-mail.
+                    </Form.Control.Feedback>
+                  </InputGroup>
+                  <Form.Control.Feedback type='invalid'>Preço de Venda Invalido</Form.Control.Feedback>
+                  <Form.Control.Feedback type='valid'>Preço de Venda Valido</Form.Control.Feedback>
+                </Form.Group>
+
+                <Form.Group as={Col} md="2">
+                  <Form.Label>Estoque</Form.Label>
+                  <InputGroup hasValidation>
+                    <InputGroup.Text id="inputGroupPrepend">+</InputGroup.Text>
+                    <Form.Control
+                      type="int"
+                      aria-describedby="inputGroupPrepend"
+                      required
+                      id = "qtdEstoque"
+                      name = "qtdEstoque"
+                      value={produto.qtdEstoque}
+                      onChange={manipularMudanca}
+                    />
+                    <Form.Control.Feedback type='invalid'>E-mail Invalido</Form.Control.Feedback>
+                    <Form.Control.Feedback type='valid'>E-mail Valido</Form.Control.Feedback>
+                  </InputGroup>
+
+                </Form.Group>
+
+              </Row>
+
             <Row className="mb-3">
+
               <Form.Group as={Col} md="9">
-                <Form.Label>URL da imagem</Form.Label>
+
+                <Form.Label>URL da Imagem</Form.Label>
                 <Form.Control
                     type="link"
                     required
@@ -160,9 +186,8 @@ export default function Produto(props){
                     value={produto.urlImagem}
                     onChange={manipularMudanca}
                 />
-                <Form.Control.Feedback type="invalid">
-                  Please provide a valid city.
-                </Form.Control.Feedback>
+                <Form.Control.Feedback type='invalid'>URL da Imagem Invalido</Form.Control.Feedback>
+                <Form.Control.Feedback type='valid'>URL da Imagem Valido</Form.Control.Feedback>
               </Form.Group>
 
               <Form.Group as={Col} md="3">
@@ -175,20 +200,26 @@ export default function Produto(props){
                   value={produto.dataValidade}
                   onChange={manipularMudanca}
                 />
-                <Form.Control.Feedback type="invalid">
-                  Please provide a valid state.
-                </Form.Control.Feedback>
+                <Form.Control.Feedback type='invalid'>Data Invalida</Form.Control.Feedback>
+                <Form.Control.Feedback type='valid'>Data Valida</Form.Control.Feedback>
+
               </Form.Group>
+
             </Row>
+
             <Form.Group className="mb-3">
+
               <Form.Check
                 required
                 label="Concordar com os termos e condições!"
-                feedback="You must agree before submitting."
+                feedback="Você deve concordar antes de enviar!"
                 feedbackType="invalid"
               />
+
             </Form.Group>
+
             <Row className='mt-2 mb-3'>
+
               <Col md={1}>
                   <Button variant='outline-success' type='submit'>
                     {props.modoEdicao ? "Salvar Alterações" : "Cadastrar"}
@@ -202,6 +233,7 @@ export default function Produto(props){
                     props.setExibirTabela(true);
                   }} >Voltar</Button>
                 </Col>
+
             </Row>
           </Form>
           </Container>
