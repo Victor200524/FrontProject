@@ -46,7 +46,7 @@ export default function Produto(props){
           props.setExibirTabela(true);
         }
         else
-            setFormValidado(false);
+            setFormValidado(true);
         
         evento.preventDefault(); // vou querer o momento padrão da submissao
         evento.stopPropagation(); // vou querer parar o momento padrão da submissao

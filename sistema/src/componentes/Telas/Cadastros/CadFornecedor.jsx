@@ -42,7 +42,7 @@ export default function Fornecedor(props){
       props.setExibirTabela(true);
     }
     else
-      setFormValidado(false);
+      setFormValidado(truee);
 
     evento.preventDefault();
     evento.stopPropagation();

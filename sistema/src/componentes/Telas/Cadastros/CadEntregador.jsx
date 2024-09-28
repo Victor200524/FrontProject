@@ -41,7 +41,7 @@ export default function Entregador(props){
         props.setExibirTabela(true);
       }
       else
-        setFormValidado(false)
+        setFormValidado(true)
 
       evento.preventDefault();
       evento.stopPropagation();

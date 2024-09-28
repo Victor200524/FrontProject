@@ -33,7 +33,7 @@ export default function CadUsuario(props){
             props.setExibirTabela(true);
         }
         else
-            setFormValidado(false);
+            setFormValidado(true);
 
             evento.preventDefault(); 
             evento.stopPropagation();
