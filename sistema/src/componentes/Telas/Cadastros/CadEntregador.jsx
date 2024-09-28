@@ -1,14 +1,57 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Container } from "react-bootstrap";
+import Form  from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import InputGroup from "react-bootstrap/InputGroup";
+import Button from "react-bootstrap/Button";
 
-export default function Entregador(){
+export default function Entregador(props){
     const [entregador,setEntregador] = useState({
-        "codigo": 0,
-        "nome": "",
-        "cnh": "",
-        "veiculo": "",
-        "placaVeiculo": "",
-        "capacidade": 0
+        codigo: 0,
+        nome: "",
+        cnh: "",
+        veiculo: "",
+        placaVeiculo: "",
+        capacidade: 0
     });
+
+    useEffect(() => {
+      if (props.modoEdicao) {
+        setEntregador(props.entregadorSelecionado); // Atualiza os dados para edição
+      }
+    }, [props.modoEdicao, props.entregadorSelecionado]);
+    
+
+    const [formValidado,setFormValidado] = useState(false);
+
+    function manipularSubmissao(evento){
+      const form = evento.currentTarget;
+      if(form.checkValidity()){
+        if(props.modoEdicao){
+            const listaAtualizada = props.listaEntregador.map((item)=>{
+              return item.codigo === entregador.codigo ? entregador : item
+            });
+            props.setListaEntregador(listaAtualizada);
+            props.setModoEdicao(false);
+        }
+        else
+          props.setListaEntregador([...props.listaEntregador,entregador]);
+
+        props.setExibirTabela(true);
+      }
+      else
+        setFormValidado(false)
+
+      evento.preventDefault();
+      evento.stopPropagation();
+    }
+
+    function manipularMudanca(evento){
+      const elemento = evento.target.name;
+      const valor = evento.target.value;
+      setEntregador({...entregador,[elemento]:valor});
+    }
 
     return(
         <div>
@@ -30,7 +73,7 @@ export default function Entregador(){
                       onChange={manipularMudanca}
                     />
                     <Form.Control.Feedback type='invalid'>Código Invalido</Form.Control.Feedback>
-                    <Form.Control.Feedback type='valid'>Codigo Valido</Form.Control.Feedback>
+                    <Form.Control.Feedback type='valid'>Código Valido</Form.Control.Feedback>
                   </Form.Group>
   
                   <Form.Group as={Col} md="4">
@@ -50,13 +93,11 @@ export default function Entregador(){
                   <Form.Group as={Col} md="2" >
                     <Form.Label>CNH</Form.Label>
                     <InputGroup hasValidation>
-                      <InputGroup.Text id="inputGroupPrepend">R$</InputGroup.Text>
                       <Form.Control
                         type="text"
-                        aria-describedby="inputGroupPrepend"
                         required
-                        id = "precoCusto"
-                        name = "precoCusto"
+                        id = "cnh"
+                        name = "cnh"
                         value={entregador.cnh}
                         onChange={manipularMudanca}
                         placeholder='00000000000'
@@ -69,11 +110,10 @@ export default function Entregador(){
                   <Form.Group as={Col} md="2">
                     <Form.Label>Veiculo</Form.Label>
                     <InputGroup hasValidation>
-                      <InputGroup.Text id="inputGroupPrepend">R$</InputGroup.Text>
                       <Form.Control
                         type="text"
-                        id = "precoVenda"
-                        name = "precoVenda"
+                        id = "veiculo"
+                        name = "veiculo"
                         value={entregador.veiculo}
                         onChange={manipularMudanca}
                         required
@@ -86,7 +126,6 @@ export default function Entregador(){
                   <Form.Group as={Col} md="2">
                     <Form.Label>Placa Veículo</Form.Label>
                     <InputGroup hasValidation>
-                      <InputGroup.Text id="inputGroupPrepend">+</InputGroup.Text>
                       <Form.Control
                         type="text"
                         required
