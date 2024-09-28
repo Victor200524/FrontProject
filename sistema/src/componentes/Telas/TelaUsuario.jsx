@@ -9,7 +9,7 @@ export default function TelaUsuario(props){
     const [exibirTabela,setExibirTabela] = useState(true);
     const [listaDeUsuario,setListaDeUsuario] = useState(usuarios);
     const [modoEdicao,setModoEdicao] = useState(false);
-    const [usuarioSelecionado,setUsuarioSelecionado] = useState(FileSystemWritableFileStream);
+    const [usuarioSelecionado,setUsuarioSelecionado] = useState(false);
    
     return(
         <>

@@ -64,6 +64,7 @@ export default function TabelaFornecedor(props){
                         }
                     </tbody>
                 </Table>
+                <p> Quantidade de fornecedor(es) cadastrados: {props.listaDeFornecedor.length}</p>
             </Container>
         </>
     );

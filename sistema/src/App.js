@@ -6,6 +6,7 @@ import TelaCliente from './componentes/Telas/TelaCliente.jsx';
 import TelaCategoria from './componentes/Telas/TelaCategoria.jsx';
 import TelaFornecedor from './componentes/Telas/TelaFornecedor.jsx';
 import TelaEntregador from './componentes/Telas/TelaEntregador.jsx';
+import TelaUsuario from './componentes/Telas/TelaUsuario.jsx';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
                 <Route path="/fornecedor" element={<TelaFornecedor />}/>
                 <Route path="/categoria" element={<TelaCategoria />}/>
                 <Route path="/entregador" element={<TelaEntregador />}/>
+                <Route path="/usuario" element={<TelaUsuario />}/>
                 <Route path="/" element={<TelaMenu />}/>
                 <Route path="*" element={<Tela404 />}/>
               </Routes>

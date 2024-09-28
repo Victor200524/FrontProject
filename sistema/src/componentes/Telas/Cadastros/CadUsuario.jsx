@@ -1,4 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
+import { Container } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
+import Row from 'react-bootstrap/Row';
 
 export default function CadUsuario(props){
     const [usuario,setUsuario] = useState({
@@ -39,6 +45,12 @@ export default function CadUsuario(props){
             evento.stopPropagation();
     }    
 
+    function manipularMudanca(evento){
+      const elemento = evento.target.name;
+      const valor = evento.target.value;
+      setUsuario({...usuario,[elemento]:valor}); 
+    } 
+
     return(
         <div>
         <div>
@@ -51,123 +63,88 @@ export default function CadUsuario(props){
                   <Form.Label>Código</Form.Label>
                   <Form.Control
                     required
-                    disabled={props.modoEdicao} // Faz com que bloqueie o codigo, para não ser alterado
                     id = "codigo"
                     name = "codigo"
                     type="int"
-                    value={produto.codigo}
+                    value={usuario.codigo}
                     onChange={manipularMudanca}
                   />
-                  <Form.Control.Feedback type='invalid'>Código Invalido</Form.Control.Feedback>
-                  <Form.Control.Feedback type='valid'>Codigo Valido</Form.Control.Feedback>
+                  <Form.Control.Feedback type='invalid'>Nome Invalido</Form.Control.Feedback>
+                  <Form.Control.Feedback type='valid'>Nome Valido</Form.Control.Feedback>
+                </Form.Group>
+
+
+                <Form.Group as={Col} md="2" >
+                  <Form.Label>Nome</Form.Label>
+                  <Form.Control
+                    required
+                    id = "nome"
+                    name = "nome"
+                    type="int"
+                    value={usuario.nome}
+                    onChange={manipularMudanca}
+                  />
+                  <Form.Control.Feedback type='invalid'>Nome Invalido</Form.Control.Feedback>
+                  <Form.Control.Feedback type='valid'>Nome Valido</Form.Control.Feedback>
                 </Form.Group>
 
                 <Form.Group as={Col} md="4">
-                  <Form.Label>Descrição</Form.Label>
+                  <Form.Label>Senha</Form.Label>
                   <Form.Control
+                    placeholder='Senha'
                     required
                     type="text"
-                    id = "descricao"
-                    name = "descricao"
-                    value={produto.descricao}
+                    id = "senha"
+                    name = "senha"
+                    value={usuario.descricao}
                     onChange={manipularMudanca}
                   />
-                <Form.Control.Feedback type='invalid'>Descrição Invalido</Form.Control.Feedback>
-                <Form.Control.Feedback type='valid'>Descrição Valida</Form.Control.Feedback>
+                <Form.Control.Feedback type='invalid'>Senha Invalido</Form.Control.Feedback>
+                <Form.Control.Feedback type='valid'>Senha Valida</Form.Control.Feedback>
                 </Form.Group>
 
                 <Form.Group as={Col} md="2" >
-                  <Form.Label>Preço de Custo</Form.Label>
+                  <Form.Label>Tipo</Form.Label>
                   <InputGroup hasValidation>
-                    <InputGroup.Text id="inputGroupPrepend">R$</InputGroup.Text>
                     <Form.Control
+                      as="select"
                       type="double"
                       aria-describedby="inputGroupPrepend"
                       required
-                      id = "precoCusto"
-                      name = "precoCusto"
-                      value={produto.precoCusto}
+                      id = "tipo"
+                      name = "tipo"
+                      value={usuario.tipo}
                       onChange={manipularMudanca}
-                    />
+                    >
+                      <option value="">Selecione o tipo</option>
+                      <option value="AD">Administrador</option>
+                      <option value="NL">Normal</option>
+                      <option value="VS">Visitante</option>
+                    </Form.Control>
                     <Form.Control.Feedback type='invalid'>Preço de Custo Invalido</Form.Control.Feedback>
                     <Form.Control.Feedback type='valid'>Preço de Custo Valido</Form.Control.Feedback>
                   </InputGroup>
                 </Form.Group>
 
                 <Form.Group as={Col} md="2">
-                  <Form.Label>Preço de de Venda</Form.Label>
+                  <Form.Label>E-mail</Form.Label>
                   <InputGroup hasValidation>
-                    <InputGroup.Text id="inputGroupPrepend">R$</InputGroup.Text>
+                    <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
                     <Form.Control
-                      type="double"
-                      id = "precoVenda"
-                      name = "precoVenda"
-                      value={produto.precoVenda}
+                      placeholder="E-mail"
+                      type="text"
+                      id = "email"
+                      name = "email"
+                      value={usuario.email}
                       onChange={manipularMudanca}
                       required
                     />
-                    <Form.Control.Feedback type="invalid">
-                      Please choose a e-mail.
-                    </Form.Control.Feedback>
+                  <Form.Control.Feedback type='invalid'>E-mail Invalido</Form.Control.Feedback>
+                  <Form.Control.Feedback type='valid'>E-mail Valido</Form.Control.Feedback>
                   </InputGroup>
-                  <Form.Control.Feedback type='invalid'>Preço de Venda Invalido</Form.Control.Feedback>
-                  <Form.Control.Feedback type='valid'>Preço de Venda Valido</Form.Control.Feedback>
-                </Form.Group>
-
-                <Form.Group as={Col} md="2">
-                  <Form.Label>Estoque</Form.Label>
-                  <InputGroup hasValidation>
-                    <InputGroup.Text id="inputGroupPrepend">+</InputGroup.Text>
-                    <Form.Control
-                      type="int"
-                      aria-describedby="inputGroupPrepend"
-                      required
-                      id = "qtdEstoque"
-                      name = "qtdEstoque"
-                      value={produto.qtdEstoque}
-                      onChange={manipularMudanca}
-                    />
-                    <Form.Control.Feedback type='invalid'>E-mail Invalido</Form.Control.Feedback>
-                    <Form.Control.Feedback type='valid'>E-mail Valido</Form.Control.Feedback>
-                  </InputGroup>
-
                 </Form.Group>
 
               </Row>
-
-            <Row className="mb-3">
-
-              <Form.Group as={Col} md="9">
-
-                <Form.Label>URL da Imagem</Form.Label>
-                <Form.Control
-                    type="link"
-                    required
-                    id = "urlImagem"
-                    name = "urlImagem"
-                    value={produto.urlImagem}
-                    onChange={manipularMudanca}
-                />
-                <Form.Control.Feedback type='invalid'>URL da Imagem Invalido</Form.Control.Feedback>
-                <Form.Control.Feedback type='valid'>URL da Imagem Valido</Form.Control.Feedback>
-              </Form.Group>
-
-              <Form.Group as={Col} md="3">
-                <Form.Label>Valido até</Form.Label>
-                <Form.Control 
-                  type="date" 
-                  required 
-                  id = "dataValidade"
-                  name = "dataValidade"
-                  value={produto.dataValidade}
-                  onChange={manipularMudanca}
-                />
-                <Form.Control.Feedback type='invalid'>Data Invalida</Form.Control.Feedback>
-                <Form.Control.Feedback type='valid'>Data Valida</Form.Control.Feedback>
-
-              </Form.Group>
-
-            </Row>
 
             <Form.Group className="mb-3">
 

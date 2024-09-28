@@ -79,6 +79,7 @@ export default function Entregador(props){
                   <Form.Group as={Col} md="4">
                     <Form.Label>Nome</Form.Label>
                     <Form.Control
+                      placeholder="Nome"
                       required
                       type="text"
                       id = "nome"
@@ -111,6 +112,7 @@ export default function Entregador(props){
                     <Form.Label>Veiculo</Form.Label>
                     <InputGroup hasValidation>
                       <Form.Control
+                        placeholder="Veículo"
                         type="text"
                         id = "veiculo"
                         name = "veiculo"
@@ -127,6 +129,7 @@ export default function Entregador(props){
                     <Form.Label>Placa Veículo</Form.Label>
                     <InputGroup hasValidation>
                       <Form.Control
+                        placeholder="AAA0A00"
                         type="text"
                         required
                         id = "placaVeiculo"

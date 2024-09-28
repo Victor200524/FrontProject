@@ -84,6 +84,7 @@ export default function Produto(props){
                 <Form.Group as={Col} md="4">
                   <Form.Label>Descrição</Form.Label>
                   <Form.Control
+                    placeholder='Descrição'
                     required
                     type="text"
                     id = "descricao"
@@ -157,6 +158,7 @@ export default function Produto(props){
 
                 <Form.Label>URL da Imagem</Form.Label>
                 <Form.Control
+                    placeholder='https://....'
                     type="link"
                     required
                     id = "urlImagem"

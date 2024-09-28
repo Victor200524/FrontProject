@@ -71,6 +71,7 @@ export default function Categoria(props){
               <Form.Group as={Col} md="2">
                 <Form.Label>Nome</Form.Label>
                 <Form.Control
+                  placeholder='Nome'
                   required
                   type="text"
                   id = "nome"
@@ -84,6 +85,7 @@ export default function Categoria(props){
               <Form.Group as={Col} md="4">
                 <Form.Label>Tipo</Form.Label>
                 <Form.Control
+                  placeholder='Tipo'
                   required
                   type="text"
                   id = "tipo"

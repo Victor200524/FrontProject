@@ -97,6 +97,7 @@ export default function Fornecedor(props){
                   <InputGroup hasValidation>
                     <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
                     <Form.Control
+                      placeholder='E-mail'
                       required
                       type="text"
                       id = "email"
@@ -168,8 +169,7 @@ export default function Fornecedor(props){
                 id = "uf"
                 name = "uf"
                 value = {fornecedor.uf}
-                onChange = {manipularMudanca}
-              >
+                onChange = {manipularMudanca}>
                 <option value="">Selecione o estado</option> {/* Placeholder */}
                 <option value="AC">Acre</option>
                 <option value="AL">Alagoas</option>
@@ -205,7 +205,7 @@ export default function Fornecedor(props){
 
               <Form.Group as={Col} md="3">
                 <Form.Label>Numero</Form.Label>
-                <Form.Control 
+                <Form.Control   
                   type="text" 
                   required 
                   id = "numero"

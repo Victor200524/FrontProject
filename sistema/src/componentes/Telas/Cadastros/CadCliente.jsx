@@ -30,16 +30,16 @@ export default function Cliente(props){
 
     if(form.checkValidity()){
       if(props.modoEdicao){
-        const listaAtualizada = props.listaDeCliente.map((item)=>{
-          return item.cpf === cliente.cpf ? cliente : item
-        });
-        props.setListaDeCliente(listaAtualizada);
-        props.setModoEdicao(false);
-      }
-      else
-        props.setListaDeCliente([...props.listaDeCliente,cliente]);
+          const listaAtualizada = props.listaDeCliente.map((item)=>{
+            return item.cpf === cliente.cpf ? cliente : item
+          });
+          props.setListaDeCliente(listaAtualizada);
+          props.setModoEdicao(false);
+        }
+        else
+          props.setListaDeCliente([...props.listaDeCliente,cliente]);
       
-      props.setExibirTabela(true);
+        props.setExibirTabela(true);
       }
     else
       setFormValidado(true);
@@ -58,7 +58,7 @@ export default function Cliente(props){
       <div>
         <div>
           <Container>
-            <Form noValidate validate={formValidado} onSubmit={manipularSubmissao}>
+            <Form noValidate validated={formValidado} onSubmit={manipularSubmissao}>
               <Row className="mb-3">
                 <Form.Group as={Col} md="4">
                   <Form.Label>Nome Completo</Form.Label>
@@ -71,8 +71,10 @@ export default function Cliente(props){
                     value = {cliente.nome}
                     onChange = {manipularMudanca}
                   />
-                  <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                  <Form.Control.Feedback type='invalid'>Nome Invalido</Form.Control.Feedback>
+                  <Form.Control.Feedback type='valid'>Nome Valido</Form.Control.Feedback>
                 </Form.Group>
+
                 <Form.Group as={Col} md="4">
                   <Form.Label>Data de Nascimento</Form.Label>
                   <Form.Control
@@ -83,8 +85,10 @@ export default function Cliente(props){
                     value = {cliente.data}
                     onChange = {manipularMudanca}
                   />
-                  <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                  <Form.Control.Feedback type='invalid'>Data de Nascimento Invalido</Form.Control.Feedback>
+                  <Form.Control.Feedback type='valid'>Data de Nascimento  Valido</Form.Control.Feedback>
                 </Form.Group>
+
                 <Form.Group as={Col} md="4">
                   <Form.Label>E-mail</Form.Label>
                   <InputGroup hasValidation>
@@ -94,12 +98,12 @@ export default function Cliente(props){
                       required
                       id = "email"
                       name = "email"
+                      placeholder="E-mail"
                       value = {cliente.email}
                       onChange = {manipularMudanca}
                     />
-                    <Form.Control.Feedback type="invalid">
-                      Please choose a e-mail.
-                    </Form.Control.Feedback>
+                  <Form.Control.Feedback type='invalid'>E-mail Invalido</Form.Control.Feedback>
+                  <Form.Control.Feedback type='valid'>E-mail Valido</Form.Control.Feedback>
                   </InputGroup>
                 </Form.Group>
               </Row>
