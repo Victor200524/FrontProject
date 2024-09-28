@@ -38,25 +38,6 @@ export default function Produto(props){
             });
             props.setListaDeProdutos(listaAtualizada);
             props.setModoEdicao(false);
-            
-            // OUUU
-
-            /*
-              props.setListaDeProdutos(props.listaDeProdutos.map((item)=>{
-                 return item.codigo === produto.codigo ? produto : item
-                }); 
-
-              props.setProdutoSelecionado({
-                codigo: 0,
-                descricao:"",
-                precoCusto: 0.00,
-                precoVenda:0.00,
-                qtdEstoque:0,
-                urlImagem:"",
-                dataValidade:""
-              });
-            */
-
           }
           else //Cadastro do produto
             props.setListaDeProdutos([...props.listaDeProdutos,produto]); //Array vazio esta recebendo com itens, o conteudo dessa lista espalhada, preenchendo esse novo array
@@ -144,9 +125,6 @@ export default function Produto(props){
                       onChange={manipularMudanca}
                       required
                     />
-                    <Form.Control.Feedback type="invalid">
-                      Please choose a e-mail.
-                    </Form.Control.Feedback>
                   </InputGroup>
                   <Form.Control.Feedback type='invalid'>Preço de Venda Invalido</Form.Control.Feedback>
                   <Form.Control.Feedback type='valid'>Preço de Venda Valido</Form.Control.Feedback>
