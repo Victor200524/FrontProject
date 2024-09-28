@@ -125,9 +125,6 @@ export default function Produto(props){
                       onChange={manipularMudanca}
                       required
                     />
-                    <Form.Control.Feedback type="invalid">
-                      Please choose a e-mail.
-                    </Form.Control.Feedback>
                   </InputGroup>
                   <Form.Control.Feedback type='invalid'>Preço de Venda Invalido</Form.Control.Feedback>
                   <Form.Control.Feedback type='valid'>Preço de Venda Valido</Form.Control.Feedback>
