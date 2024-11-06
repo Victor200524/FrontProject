@@ -1,38 +1,38 @@
-const urlBase = 'https://backend-projetct.vercel.app/categoria';
+const urlBase = 'https://backend-projetct.vercel.app/produtos';
 
-export async function gravarCategoria(categoria){
+export async function gravarProduto(Produto){
     const resposta = await fetch(urlBase,{
         'method':"POST",
         'headers': { 
             'Content-Type':"application/json"
         },
-        'body': JSON.stringify(categoria)
+        'body': JSON.stringify(Produto)
     });
     const resultado = await resposta.json();
     return resultado;
 }
 
-export async function alterarCategoria(categoria){
+export async function alterarProduto(Produto){
     const resposta = await fetch(urlBase,{
         'method':"PUT",
         'headers': { 
             'Content-Type':"application/json"
         },
-        'body': JSON.stringify(categoria)
+        'body': JSON.stringify(Produto)
     });
     const resultado = await resposta.json();
     return resultado;
 }
 
-export async function excluirCategoria(categoria){
-    const resposta = await fetch(urlBase + "/" + categoria.codigo,{
+export async function excluirProduto(Produto){
+    const resposta = await fetch(urlBase + "/" + Produto.codigo,{
         'method':"DELETE",
     });
     const resultado = await resposta.json();
     return resultado;
 }
 
-export async function consultarCategoria() {
+export async function consultarProduto() {
     const resposta = await fetch(urlBase,{
         'method':"GET"
     });
