@@ -1,6 +1,6 @@
 import { Container,Button,Col,Form,InputGroup,Row, Spinner } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
-import { gravarProduto} from '../../../servicos/servicoProduto';
+import { alterarProduto, gravarProduto} from '../../../servicos/servicoProduto';
 import toast, { Toaster } from 'react-hot-toast';
 import { consultarCategoria } from '../../../servicos/servicoCategorias';
 
@@ -101,6 +101,12 @@ export default function Produto(props){
               urlImagem: "",
               dataValidade: ""
             });
+            alterarProduto(produto).then((resultado)=>{
+              if(resultado.codigo !== produto.codigo)
+                return resultado;
+              else
+                return produto;
+            })
             props.setExibirTabela(true);
           }
         }
