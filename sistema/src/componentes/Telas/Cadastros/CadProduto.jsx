@@ -51,6 +51,16 @@ export default function Produto(props){
             ), produto]);*/
 
             //não altera a ordem dos registros
+            alterarProduto(produto).then((resposta)=>{
+              console.log(resposta)
+              if(resposta.status){
+                props.setListaDeProdutos([...props.listaDeProdutos.filter(
+                  (item) => {
+                      return item.codigo !== produto.codigo;
+                  }
+                ), produto]);
+              }
+            })
             props.setListaDeProdutos(props.listaDeProdutos.map((item) => {
               if (item.codigo !== produto.codigo)
                   return item

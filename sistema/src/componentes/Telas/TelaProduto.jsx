@@ -2,7 +2,7 @@ import Pagina from "../layouts/Pagina.jsx";
 import { Container,Alert } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import TabelaProdutos from "./Tabelas/TabelaProdutos.jsx";
-import CadProduto from "../Telas/Cadastros/CadProduto.jsx";
+import CadProduto from "./Cadastros/CadProduto.jsx";
 import { produtos } from "../../dados/mockProdutos.js";
 import { consultarProduto } from "../../servicos/servicoProduto.js";
 
