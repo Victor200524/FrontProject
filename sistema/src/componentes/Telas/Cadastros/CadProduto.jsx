@@ -21,13 +21,70 @@ export default function Produto(props){
         toast.error("Não foi possivel carregar as categorias");
     }).catch((erro)=>{
         setTemCategoria(false);
-        toast.error("Não foi possivel carregar as categorias");
+        toast.error("Não foi possivel carregar as categorias ",erro);
     });
   },[]); //didMount
 
   function selecionarCategoria(evento){
     setProduto({...produto,categoria:{codigo: evento.currentTarget.value}});
   }
+    
+  function manipularSubmissao(evento) {
+    const form = evento.currentTarget;
+    if (form.checkValidity()) {
+        if (!props.modoEdicao) {
+            gravarProduto(produto).then((resultado) => {
+            if (resultado.status) {
+                props.setExibirTabela(true);
+            } else {
+                toast.error(resultado.mensagem);
+            }
+            });
+        } 
+        else {
+            //editar o produto
+            /*altera a ordem dos registros
+            props.setListaDeProdutos([...props.listaDeProdutos.filter(
+                (item) => {
+                    return item.codigo !== produto.codigo;
+                }
+            ), produto]);*/
+
+            //não altera a ordem dos registros
+            props.setListaDeProdutos(props.listaDeProdutos.map((item) => {
+              if (item.codigo !== produto.codigo)
+                  return item
+              else
+                  return produto
+          }));
+
+          //voltar para o modo de inclusão
+            props.setModoEdicao(false);
+            props.setProdutoSelecionado({
+              codigo: 0,
+              descricao: "",
+              precoCusto: 0,
+              precoVenda: 0,
+              qtdEstoque: 0,
+              urlImagem: "",
+              dataValidade: ""
+          });
+          props.setExibirTabela(true);
+        }
+    } 
+    else 
+        setFormValidado(true);
+    
+    evento.preventDefault();
+    evento.stopPropagation();
+}
+
+
+function manipularMudanca(evento){
+  const elemento = evento.target.name;
+  const valor = evento.target.value;
+  setProduto({...produto,[elemento]:valor}); //{...produto} -> é um sprad, onde ele é um espalhador, onde ele despeja o conteudo desse objeto para um novo objeto
+}  
 
   //Quando um produto é selecionado, faço com que preencha automaticamente as lacunas com as informações dele
   // useEffect(() => {
@@ -61,67 +118,7 @@ export default function Produto(props){
   //     evento.preventDefault(); // vou querer o momento padrão da submissao
   //     evento.stopPropagation(); // vou querer parar o momento padrão da submissao
   // }
-    
-    function manipularSubmissao(evento){
-        const form = evento.currentTarget;
-        if(form.checkValidity()){
-          if(!props.modoEdicao){
-            //cadastrar produto
-            gravarProduto(produto).then((resultado)=>{
-              if(resultado.status){
-                  //exibir tabela com o produto incluido
-                  props.setExibirTabela(true);
-              }
-              else
-                toast.error(resultado.mensagem);
-            });
-          }
-          else{
-            //editar o produto e altera a ordem dos registros
-            // props.setListaDeProdutos([...props.listaDeProdutos.filter((item)=>{
-            //   return item.codigo !== produto.codigo;
-            // }),produto]);
 
-            //não altera a ordem dos registros
-            props.setListaDeProdutos(props.listaDeProdutos.map((item)=>{
-              if(item.codigo !== produto.codigo)
-                  return item;
-              else
-                  return produto;
-            }));
-
-            //voltar para o modo de inclusão
-            props.setModoEdicao(false);
-            props.setProdutoSelecionado({
-              codigo: 0,
-              descricao: "",
-              precoCusto: 0,
-              precoVenda: 0,
-              qtdEstoque: 0,
-              urlImagem: "",
-              dataValidade: ""
-            });
-            alterarProduto(produto).then((resultado)=>{
-              if(resultado.codigo !== produto.codigo)
-                return resultado;
-              else
-                return produto;
-            })
-            props.setExibirTabela(true);
-          }
-        }
-        else
-          setFormValidado(true);
-        evento.preventDefault();
-        evento.stopPropagation();
-    }
-
-
-    function manipularMudanca(evento){
-      const elemento = evento.target.name;
-      const valor = evento.target.value;
-      setProduto({...produto,[elemento]:valor}); //{...produto} -> é um sprad, onde ele é um espalhador, onde ele despeja o conteudo desse objeto para um novo objeto
-    }  
 
     return(
       <div>
