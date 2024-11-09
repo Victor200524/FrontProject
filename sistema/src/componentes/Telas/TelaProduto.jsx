@@ -3,12 +3,12 @@ import { Container,Alert } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import TabelaProdutos from "./Tabelas/TabelaProdutos.jsx";
 import CadProduto from "./Cadastros/CadProduto.jsx";
-import { produtos } from "../../dados/mockProdutos.js";
+//import { produtos } from "../../dados/mockProdutos.js";
 import { consultarProduto } from "../../servicos/servicoProduto.js";
 
 export default function TelaProduto(props){
     const [exibirTabela,setExibirTabela]= useState(true);
-    const [listaDeProdutos,setListaDeProdutos] =useState(produtos);
+    const [listaDeProdutos,setListaDeProdutos] =useState([]);
     const [modoEdicao,setModoEdicao] = useState(false);
     const [produtoSelecionado,setProdutoSelecionado] = useState({
         codigo: 0,
