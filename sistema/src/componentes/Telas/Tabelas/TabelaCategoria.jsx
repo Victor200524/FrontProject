@@ -53,7 +53,8 @@ export default function TabelaCategoria(props){
                         }
                     </tbody>
                 </Table>
-                <p> Quantidade de categoria(s) cadastrados: {props.listaDeCategoria.length}</p>
+                <p> Quantidade de categoria(s) cadastrados: {props.listaDeCategoria ? props.listaDeCategoria.length : 0}</p>
+
             </Container>
         </>
     )

@@ -11,13 +11,13 @@ export default function Categoria(props){
     nome: "",
     tipo:""
   });
+  const[formValidado,setFormValidado] = useState(false);
   
   useEffect(()=>{
     if(props.modoEdicao)
       setCategoria(props.categoriaSelecionada);
   },[props.modoEdicao, props.categoriaSelecionada]);
 
-  const[formValidado,setFormValidado] = useState(false);
 
   function manipularSubmissao(evento){
     const form = evento.currentTarget;
