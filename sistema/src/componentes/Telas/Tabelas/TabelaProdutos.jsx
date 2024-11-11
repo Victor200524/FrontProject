@@ -81,7 +81,8 @@ export default function TabelaProdutos(props) {
           </tr>
         </thead>
         <tbody>
-          {produtos.map((produto) => (
+          {
+            produtos.map((produto) => (
             <tr>
                 <td>{produto.codigo}</td>  
                 <td>{produto.descricao}</td>
@@ -89,7 +90,8 @@ export default function TabelaProdutos(props) {
                 <td>{produto.precoVenda}</td>
                 <td>{produto.qtdEstoque}</td>
                 <td><img style={{"height":"50px","width":"50px"}} src={produto.urlImagem} alt="foto do produto"/></td>
-                <td>{produto.dataValidade}</td>
+                {/* <td>{new Intl.DateTimeFormat('pt-BR', { year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date(produto.dataValidade))}</td> */}
+                <td>{new Date(produto.dataValidade).toLocaleDateString()}</td>
                 <td>{produto.categoria.descricao}</td>
               <td>
                     <Button variant="warning" onClick={()=>{alterarProduto(produto);}} > <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-pencil-square" viewBox="0 0 16 16">

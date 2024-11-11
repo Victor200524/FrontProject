@@ -1,4 +1,5 @@
-const urlBase = 'https://backend-projetct.vercel.app/produtos';
+//const urlBase = 'https://backend-projetct.vercel.app/produtos';
+const urlBase = 'https://backend-projetct.vercel.app/produtos'; 
 
 export async function gravarProduto(Produto){
     const resposta = await fetch(urlBase,{

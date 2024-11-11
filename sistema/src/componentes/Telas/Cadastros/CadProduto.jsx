@@ -3,12 +3,27 @@ import { useEffect, useState } from 'react';
 import { alterarProduto, gravarProduto } from '../../../servicos/servicoProduto';
 import toast, { Toaster } from 'react-hot-toast';
 import { consultarCategoria } from '../../../servicos/servicoCategorias';
+import { consultarProduto } from '../../../servicos/servicoProduto';
 
 export default function Produto(props) {
+  const [listaProd,setListaProd] = useState([]);
   const [produto, setProduto] = useState(props.produtoSelecionado);
   const [formValidado, setFormValidado] = useState(false);
   const [categorias, setCategoria] = useState([]);
   const [temCategoria, setTemCategoria] = useState(false);
+
+  async function carregarProdutos() {
+    try {
+      const data = await consultarProduto();  // listagem de produtos
+      setListaProd(data);
+    } catch (error) {
+        toast.error("Erro ao consultar a lista de produtos: ",error);
+    }
+  }
+
+  useEffect(() => {
+    carregarProdutos();
+  }, []);
 
   useEffect(() => {
     consultarCategoria()
@@ -56,6 +71,7 @@ export default function Produto(props) {
         //voltar para o modo de inclusão
         props.setModoEdicao(false);
         props.setExibirTabela(true);
+        carregarProdutos();
         props.setProdutoSelecionado({
             codigo: "",
             descricao: "",
