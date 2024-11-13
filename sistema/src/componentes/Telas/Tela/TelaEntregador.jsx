@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { listaEntregadores } from "../../dados/mockEntregador";
-import Pagina from "../layouts/Pagina";
+import { listaEntregadores } from "../../../dados/mockEntregador";
+import Pagina from "../../layouts/Pagina";
 import { Container } from "react-bootstrap";
 import { Alert } from "react-bootstrap";    
-import TabelaEntregador from "./Tabelas/TabelaEntregador";
-import CadEntregador from "./Cadastros/CadEntregador";
+import TabelaEntregador from "../Tabelas/TabelaEntregador";
+import CadEntregador from "../Cadastros/CadEntregador";
 
 export default function TelaEntregador(props) {
     const [exibirTabela, setExibirTabela] = useState(true);

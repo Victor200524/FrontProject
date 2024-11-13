@@ -1,9 +1,9 @@
-import CadCliente from "./Cadastros/CadCliente.jsx";
-import Pagina from "../layouts/Pagina.jsx"
+import CadCliente from "../Cadastros/CadCliente.jsx";
+import Pagina from "../../layouts/Pagina.jsx"
 import { Container,Alert } from "react-bootstrap";
 import { useState } from "react";
-import TabelaCliente from "./Tabelas/TabelaCliente.jsx";
-import { clientes } from "../../dados/mockCliente.js"
+import TabelaCliente from "../Tabelas/TabelaCliente.jsx";
+import { clientes } from "../../../dados/mockCliente.js"
 
 export default function TelaCliente(props){
     const[exibirTabela,setExibirTabela] = useState(true);

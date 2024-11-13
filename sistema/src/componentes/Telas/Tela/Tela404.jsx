@@ -1,5 +1,5 @@
-import Pagina from "../layouts/Pagina.jsx";
-import imagem404 from "../../assets/Imagens/imagem_erro.jpg";
+import Pagina from "../../layouts/Pagina.jsx";
+import imagem404 from "../../../assets/Imagens/imagem_erro.jpg";
 import { Container } from "react-bootstrap";
 
 export default function Tela404(props){

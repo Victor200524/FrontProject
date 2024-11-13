@@ -4,13 +4,40 @@ import { alterarProduto, gravarProduto } from '../../../servicos/servicoProduto'
 import toast, { Toaster } from 'react-hot-toast';
 import { consultarCategoria } from '../../../servicos/servicoCategorias';
 import { consultarProduto } from '../../../servicos/servicoProduto';
+import axios from 'axios'
 
 export default function Produto(props) {
+  const [data,setData] = useState({dataValidade:''});
   const [listaProd,setListaProd] = useState([]);
   const [produto, setProduto] = useState(props.produtoSelecionado);
   const [formValidado, setFormValidado] = useState(false);
   const [categorias, setCategoria] = useState([]);
   const [temCategoria, setTemCategoria] = useState(false);
+
+
+  useEffect(()=>{
+    const fetchProduto = async () =>{
+      try{
+        const response = await axios.get('https://backend-projetct.vercel.app/produtos');
+        const dataValidade = new Date(response.produto.dataValidade).toLocaleDateString('pt-BR');
+        setData({...response.produto,dataValidade});
+      }catch(error){
+        toast.error("Erro ao buscar o produto: ",error)
+      }
+    }
+    fetchProduto();
+  },[]);
+
+  const manipularData = (e)=>{
+    const { name, value } = e.target;
+    // Converte a data no formato BR para 'yyyy-MM-dd' para manter a compatibilidade com o backend
+    const dataFormatada = new Date(value.split('/').reverse().join('-')).toISOString().split('T')[0];
+    setProduto({
+      ...produto,
+      [name]: dataFormatada,
+    });
+  };
+
 
   async function carregarProdutos() {
     try {
@@ -110,7 +137,7 @@ export default function Produto(props) {
                 name="codigo"
                 type="int"
                 disabled
-                value={produto.codigo || ""}
+                value={produto.codigo}
                 onChange={manipularMudanca}
               />
               <Form.Control.Feedback type="invalid">Código Inválido</Form.Control.Feedback>
@@ -125,7 +152,7 @@ export default function Produto(props) {
                 type="text"
                 id="descricao"
                 name="descricao"
-                value={produto.descricao || ""}
+                value={produto.descricao}
                 onChange={manipularMudanca}
               />
               <Form.Control.Feedback type="invalid">Descrição Inválida</Form.Control.Feedback>
@@ -141,7 +168,7 @@ export default function Produto(props) {
                   type="number"
                   id="precoCusto"
                   name="precoCusto"
-                  value={produto.precoCusto || ""}
+                  value={produto.precoCusto}
                   onChange={manipularMudanca}
                 />
                 <Form.Control.Feedback type="invalid">Preço de Custo Inválido</Form.Control.Feedback>
@@ -157,7 +184,7 @@ export default function Produto(props) {
                   type="number"
                   id="precoVenda"
                   name="precoVenda"
-                  value={produto.precoVenda || ""}
+                  value={produto.precoVenda}
                   onChange={manipularMudanca}
                   required
                 />
@@ -174,7 +201,7 @@ export default function Produto(props) {
                   type="number"
                   id="qtdEstoque"
                   name="qtdEstoque"
-                  value={produto.qtdEstoque || ""}
+                  value={produto.qtdEstoque}
                   onChange={manipularMudanca}
                   required
                 />
@@ -192,7 +219,7 @@ export default function Produto(props) {
                 type="url"
                 id="urlImagem"
                 name="urlImagem"
-                value={produto.urlImagem || ""}
+                value={produto.urlImagem}
                 onChange={manipularMudanca}
                 placeholder="https://...."
               />
@@ -207,8 +234,8 @@ export default function Produto(props) {
                 type="date"
                 id="dataValidade"
                 name="dataValidade"
-                value={produto.dataValidade || ""}
-                onChange={manipularMudanca}
+                value={produto.dataValidade}
+                onChange={manipularData}
               />
               <Form.Control.Feedback type="invalid">Data Inválida</Form.Control.Feedback>
               <Form.Control.Feedback type="valid">Data Válida</Form.Control.Feedback>
@@ -220,7 +247,7 @@ export default function Produto(props) {
                 id="categorias"
                 name="categorias"
                 onChange={selecionarCategoria}
-                value={produto.categoria?.codigo || ""}
+                value={produto.categoria?.codigo}
               >
                 <option value="" disabled>Selecione uma categoria</option>
                 {categorias.map((categoria) => {

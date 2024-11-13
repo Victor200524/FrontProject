@@ -1,13 +1,13 @@
-import TelaMenu from './componentes/Telas/TelaMenu.jsx';
-import {BrowserRouter, Route, Routes} from "react-router-dom"
-import Tela404 from './componentes/Telas/Tela404.jsx';
-import TelaProduto from './componentes/Telas/TelaProduto.jsx';
-import TelaCliente from './componentes/Telas/TelaCliente.jsx';
-import TelaCategoria from './componentes/Telas/TelaCategoria.jsx';
-import TelaFornecedor from './componentes/Telas/TelaFornecedor.jsx';
-import TelaEntregador from './componentes/Telas/TelaEntregador.jsx';
-import TelaUsuario from './componentes/Telas/TelaUsuario.jsx';
-import TelaLogin from './componentes/Telas/TelaLogin.jsx';
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import TelaMenu from './componentes/Telas/Tela/TelaMenu.jsx';
+import Tela404 from './componentes/Telas/Tela/Tela404.jsx';
+import TelaProduto from './componentes/Telas/Tela/TelaProduto.jsx';
+import TelaCliente from './componentes/Telas/Tela/TelaCliente.jsx';
+import TelaCategoria from './componentes/Telas/Tela/TelaCategoria.jsx';
+import TelaFornecedor from './componentes/Telas/Tela/TelaFornecedor.jsx';
+import TelaEntregador from './componentes/Telas/Tela/TelaEntregador.jsx';
+import TelaUsuario from './componentes/Telas/Tela/TelaUsuario.jsx';
+import TelaLogin from './componentes/Telas/Tela/TelaLogin.jsx';
 import { useState, createContext } from 'react';
 
 

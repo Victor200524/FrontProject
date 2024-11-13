@@ -1,6 +1,7 @@
 import { Button, Container, Table } from "react-bootstrap";
 import { useEffect, useState } from 'react';
 import { consultarProduto, excluirProduto } from '../../../servicos/servicoProduto';
+import toast from "react-hot-toast";
 
 export default function TabelaProdutos(props) {
   const [produtos, setProdutos] = useState([]);
@@ -10,7 +11,7 @@ export default function TabelaProdutos(props) {
       const data = await consultarProduto();  // Função de listagem
       setProdutos(data);
     } catch (error) {
-        console.error("Erro ao consultar a lsita de produtos: ",error);
+        toast.error("Erro ao consultar a lista de produtos: ",error);
     }
   }
 
@@ -25,11 +26,11 @@ export default function TabelaProdutos(props) {
             excluirProduto(produto).then((reposta)=>{
                 if(reposta.status){
                   props.setListaDeProdutos(props.listaDeProdutos.filter((item)=>{
-                    return item.codigo != produto.codigo
+                    return item.codigo !== produto.codigo
                   }));
                 }
                 else
-                  window.alert("Não foi possivel excluir o produto: " + reposta.mensagem);
+                  toast.error("Não foi possivel excluir o produto: " + reposta.mensagem);
               carregarProdutos();
             })
 

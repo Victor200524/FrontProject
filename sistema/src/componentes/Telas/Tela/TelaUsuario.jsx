@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { usuarios } from "../../dados/mockUsuario.js";
-import Pagina from "../layouts/Pagina.jsx";
+import { usuarios } from "../../../dados/mockUsuario.js";
+import Pagina from "../../layouts/Pagina.jsx";
 import { Alert, Container } from "react-bootstrap";
-import TabelaUsuario from "./Tabelas/TabelaUsuario.jsx";
-import CadUsuario from "./Cadastros/CadUsuario.jsx";
+import TabelaUsuario from "../Tabelas/TabelaUsuario.jsx";
+import CadUsuario from "../Cadastros/CadUsuario.jsx";
 
 export default function TelaUsuario(props){
     const [exibirTabela,setExibirTabela] = useState(true);

@@ -1,13 +1,13 @@
 import { Alert, Container } from "react-bootstrap";
-import CadCategoria from "./Cadastros/CadCategoria.jsx";
-import Pagina from "../layouts/Pagina.jsx"
-import { useState } from "react";
-import TabelaCategoria from "./Tabelas/TabelaCategoria.jsx";
-import { categorias } from "../../dados/mockCategoria.js";
+import CadCategoria from "../Cadastros/CadCategoria.jsx";
+import Pagina from "../../layouts/Pagina.jsx"
+import { useEffect, useState } from "react";
+import TabelaCategoria from "../Tabelas/TabelaCategoria.jsx";
+import { consultarCategoria } from "../../../servicos/servicoCategorias.js";
 
 export default function TelaCategoria(props){
     const [exibirTabela,setExibirTabela] = useState(true);
-    const [listaDeCategoria,setListaDeCategoria] = useState(categorias)
+    const [listaDeCategoria,setListaDeCategoria] = useState([])
     const [modoEdicao,setModoEdicao] = useState(false);
     const [categoriaSelecionada,setCategoriaSelecionada] = useState({
         id: 0,
@@ -15,6 +15,12 @@ export default function TelaCategoria(props){
         tipo: ""
     });
     
+    useEffect(()=>{
+        consultarCategoria().then((lista)=>{
+            setListaDeCategoria(lista);
+        });
+    },[]); 
+
     return(
         <>
             <Pagina>
@@ -27,10 +33,8 @@ export default function TelaCategoria(props){
                 </Container>
                 {
                     exibirTabela ? <TabelaCategoria listaDeCategorias={listaDeCategoria}
-                                                    modoEdicao={modoEdicao}
-                                                    setModoEdicao={setModoEdicao}
-                                                    categoriaSelecionada={categoriaSelecionada}
                                                     setCategoriaSelecionada={setCategoriaSelecionada}
+                                                    setModoEdicao={setModoEdicao}
                                                     setListaDeCategoria={setListaDeCategoria}
                                                     setExibirTabela={setExibirTabela}/> : 
                                     <CadCategoria   listaDeCategoria={listaDeCategoria}

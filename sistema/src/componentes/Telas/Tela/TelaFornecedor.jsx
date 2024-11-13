@@ -1,9 +1,9 @@
-import CadFornecedor from "./Cadastros/CadFornecedor.jsx";
-import Pagina from "../layouts/Pagina.jsx";
+import CadFornecedor from "../Cadastros/CadFornecedor.jsx";
+import Pagina from "../../layouts/Pagina.jsx";
 import { Container,Alert } from "react-bootstrap";
 import { useState } from "react";
-import { fornecedores } from "../../dados/mockFornecedor.js";
-import TabelaFornecedor from "./Tabelas/TabelaFornecedor.jsx";
+import { fornecedores } from "../../../dados/mockFornecedor.js";
+import TabelaFornecedor from "../Tabelas/TabelaFornecedor.jsx";
 
 export default function TelaFornecedor(props){
     const[exibirTabela,setExibirTabela] = useState(true);
