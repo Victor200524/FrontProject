@@ -10,9 +10,8 @@ export default function TelaCategoria(props){
     const [listaDeCategoria,setListaDeCategoria] = useState([])
     const [modoEdicao,setModoEdicao] = useState(false);
     const [categoriaSelecionada,setCategoriaSelecionada] = useState({
-        id: 0,
-        nomeCat: "",
-        tipo: ""
+        codigo: 0,
+        descricao: ""
     });
     
     useEffect(()=>{
@@ -27,7 +26,7 @@ export default function TelaCategoria(props){
                 <Container>
                     <Alert className="mt-02 mb-02 success text-center" variant="dark">
                     {
-                            exibirTabela ? <h1>Tabela de Categorias</h1> : <h1>Cadastro de Categorias</h1>
+                            exibirTabela ? <h1>Tabela de Categorias</h1> : <h1>{modoEdicao ? "Alterar de Categorias" : "Cadastro de Categorias"}</h1>
                     }
                     </Alert>
                 </Container>

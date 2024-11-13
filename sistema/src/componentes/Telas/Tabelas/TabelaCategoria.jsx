@@ -20,7 +20,7 @@ export default function TabelaCategoria(props){
     },[]);
 
     function excluirCategorias(categoria){
-        if(window.confirm("Deseja realmente excluir a categoria " + categoria.nome)){
+        if(window.confirm("Deseja realmente excluir a categoria " + categoria.descricao)){
             excluirCategoria(categoria).then((resposta)=>{
                 if(resposta.status){
                     props.setListaDeCategoria(props.listaDeCategoria.filter((item)=>{
@@ -46,9 +46,8 @@ export default function TabelaCategoria(props){
                     props.setExibirTabela(false);
                     props.setModoEdicao(false);
                     props.setCategoriaSelecionada({
-                        id: 0,
-                        nome: "",
-                        tipo:""});
+                        codigo: 0,
+                        descricao:""});
                 }}> Adicionar </Button>
                 <Table striped bordered hover>
                     <thead>
