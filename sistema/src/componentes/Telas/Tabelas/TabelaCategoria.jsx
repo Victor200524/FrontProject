@@ -19,20 +19,26 @@ export default function TabelaCategoria(props){
         carregarCategorias();
     },[]);
 
-    function excluirCategorias(categoria){
-        if(window.confirm("Deseja realmente excluir a categoria " + categoria.descricao)){
-            excluirCategoria(categoria).then((resposta)=>{
-                if(resposta.status){
-                    props.setListaDeCategoria(props.listaDeCategoria.filter((item)=>{
-                        return item.codigo !== categoria.codigo
-                    }));
+    function excluirCategorias(categoria) {
+        if (window.confirm("Deseja realmente excluir a categoria " + categoria.descricao)) {
+            excluirCategoria(categoria).then((resposta) => {
+                if (resposta.status) {
+                    // Atualize a lista de categorias no estado do componente pai diretamente
+                    props.setListaDeCategoria(prevCategorias => 
+                        prevCategorias.filter(item => item.codigo !== categoria.codigo)
+                    );
+                    toast.success("Categoria excluída com sucesso.");
+                } else {
+                    toast.error("Não foi possível excluir a categoria: " + resposta.mensagem);
                 }
-                else
-                    toast.error("Não foi possivel exlcuir a categoria: " + resposta.mensagem);
-                carregarCategorias();
-            })
+            }).catch(error => {
+                toast.error("Erro ao excluir a categoria.");
+            });
         }
+        carregarCategorias();
     }
+    
+
     function alterarCategoria(categoria){
         props.setCategoriaSelecionada(categoria);
         props.setModoEdicao(true);
@@ -43,11 +49,12 @@ export default function TabelaCategoria(props){
         <>
             <Container>
                 <Button className="mb-3" variant="primary" onClick={()=>{
+                    props.setCategoriaSelecionada({
+                        codigo: "",
+                        descricao:""});
                     props.setExibirTabela(false);
                     props.setModoEdicao(false);
-                    props.setCategoriaSelecionada({
-                        codigo: 0,
-                        descricao:""});
+                    props.setCategoriaSelecionada(false);
                 }}> Adicionar </Button>
                 <Table striped bordered hover>
                     <thead>

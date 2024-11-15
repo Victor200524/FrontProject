@@ -15,6 +15,7 @@ export default function Categoria(props){
   async function carregarCategorias() {
     try{
       const data = await consultarCategoria();
+      console.log(data);  // Verificar o formato do retorno
       setListaCateg(data);
     }catch(error){
       toast.error("Erro ao consultar a lista de categoiras: ",error);
@@ -84,8 +85,8 @@ export default function Categoria(props){
                   type="int"
                   id = "codigo"
                   name = "codigo"
-                  value = {categoria.codigo}
                   disabled
+                  value = {categoria.codigo}
                   onChange = {manipularMudanca}
                 />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
