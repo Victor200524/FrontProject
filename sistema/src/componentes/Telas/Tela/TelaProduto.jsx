@@ -3,11 +3,11 @@ import { Container,Alert } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import TabelaProdutos from "../Tabelas/TabelaProdutos.jsx";
 import CadProduto from "../Cadastros/CadProduto.jsx";
-import { consultarProduto } from "../../../servicos/servicoProduto.js";
+//import { consultarProduto } from "../../../servicos/servicoProduto.js";
 
 export default function TelaProduto(props){
     const [exibirTabela,setExibirTabela]= useState(true);
-    const [listaDeProdutos,setListaDeProdutos] =useState([]);
+    //const [listaDeProdutos,setListaDeProdutos] =useState([]);
     const [modoEdicao,setModoEdicao] = useState(false);
     const [produtoSelecionado,setProdutoSelecionado] = useState({
         codigo: 0,
@@ -37,13 +37,13 @@ export default function TelaProduto(props){
                     </Alert>
                 </Container>
                 {
-                    exibirTabela ? <TabelaProdutos listaDeProdutos={listaDeProdutos} 
+                    exibirTabela ? <TabelaProdutos  //listaDeProdutos={listaDeProdutos} 
+                                                    // setListaDeProdutos={setListaDeProdutos}
                                                     setProdutoSelecionado={setProdutoSelecionado}
                                                     setModoEdicao={setModoEdicao}
-                                                    setListaDeProdutos={setListaDeProdutos}
                                                     setExibirTabela={setExibirTabela}/> : 
-                                    <CadProduto listaDeProdutos={listaDeProdutos} 
-                                                setListaDeProdutos={setListaDeProdutos} 
+                                    <CadProduto //listaDeProdutos={listaDeProdutos} 
+                                                //setListaDeProdutos={setListaDeProdutos} 
                                                 setExibirTabela={setExibirTabela}
                                                 produtoSelecionado={produtoSelecionado}
                                                 setProdutoSelecionado={setProdutoSelecionado}

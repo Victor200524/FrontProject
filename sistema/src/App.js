@@ -9,7 +9,8 @@ import TelaEntregador from './componentes/Telas/Tela/TelaEntregador.jsx';
 import TelaUsuario from './componentes/Telas/Tela/TelaUsuario.jsx';
 import TelaLogin from './componentes/Telas/Tela/TelaLogin.jsx';
 import { useState, createContext } from 'react';
-
+import store from "./redux/store.js";
+import {Provider} from "react-redux";
 
 export const ContextoUsuario = createContext();
 function App() {
@@ -29,6 +30,7 @@ function App() {
     return (
       <div className="App">
           <>
+          <Provider store={store}>
             <ContextoUsuario.Provider value={{usuario,setUsuario}}>
               <BrowserRouter> 
                   {
@@ -46,6 +48,7 @@ function App() {
                   </Routes>
               </BrowserRouter>
             </ContextoUsuario.Provider>
+          </Provider>
           </>
    
       </div>

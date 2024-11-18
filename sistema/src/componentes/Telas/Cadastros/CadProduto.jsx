@@ -68,9 +68,9 @@ export default function Produto(props) {
           }
         });
         //voltar para o modo de inclusão
+        carregarProdutos();
         props.setModoEdicao(false);
         props.setExibirTabela(true);
-        carregarProdutos();
         props.setProdutoSelecionado({
             codigo: "",
             descricao: "",
