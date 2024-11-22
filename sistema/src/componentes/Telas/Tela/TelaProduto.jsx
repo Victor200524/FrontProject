@@ -1,9 +1,10 @@
 import Pagina from "../../layouts/Pagina.jsx";
 import { Container,Alert } from "react-bootstrap";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import TabelaProdutos from "../Tabelas/TabelaProdutos.jsx";
 import CadProduto from "../Cadastros/CadProduto.jsx";
 //import { consultarProduto } from "../../../servicos/servicoProduto.js";
+
 
 export default function TelaProduto(props){
     const [exibirTabela,setExibirTabela]= useState(true);
@@ -20,11 +21,11 @@ export default function TelaProduto(props){
         categoria: {}
     });
 
-    useEffect(()=>{
-        consultarProduto().then((lista)=>{
-            setListaDeProdutos(lista);
-        });
-    },[]); //listaVazia -> didMount
+    // useEffect(()=>{
+    //     consultarProduto().then((lista)=>{
+    //         setListaDeProdutos(lista);
+    //     });
+    // },[]); //listaVazia -> didMount
 
     return(
         <>
