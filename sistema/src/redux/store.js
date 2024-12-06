@@ -4,6 +4,7 @@ import produtoReducer from "./produtoReducer";
 const store = configureStore({
     reducer:{
         'produto': produtoReducer
+        //'categoria': categoriaReducer
     }
 });
 

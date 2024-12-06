@@ -34,10 +34,11 @@ export default function TabelaProdutos(props) {
         if(window.confirm("Deseja realmente excluir o produto " + produto.descricao)){
             despachante(apagarProduto(produto));
         }
+        carregarProdutos();
     }
 
    function alterarProduto(produto){
-        props.setProdutoSelecionado(produto); // Passa o produto para a edição
+        props.setProduto(produto); // Passa o produto para a edição
         props.setModoEdicao(true); // Ativa o modo de edição
         props.setExibirTabela(false); // Vai para a tela de cadastro/edição
     } 
@@ -54,13 +55,13 @@ export default function TabelaProdutos(props) {
       <>
         <Alert variant="danger">{mensagem}</Alert>
       </>
-    )
+    );
   }
   else{
     return (
       <Container>
         <Button variant="primary" onClick={() => {
-          props.setProdutoSelecionado({
+          props.setProduto({
             codigo: "",
             descricao: "",
             precoCusto: "",
@@ -71,7 +72,7 @@ export default function TabelaProdutos(props) {
             categoria: {}});
           props.setExibirTabela(false);
           props.setModoEdicao(false);
-          props.setProdutoSelecionado(false);}}>
+          props.setProduto(false);}}>
           Adicionar
         </Button>
         <Table striped bordered hover>

@@ -10,16 +10,17 @@ export default function TelaProduto(props){
     const [exibirTabela,setExibirTabela]= useState(true);
     //const [listaDeProdutos,setListaDeProdutos] =useState([]);
     const [modoEdicao,setModoEdicao] = useState(false);
-    const [produtoSelecionado,setProdutoSelecionado] = useState({
-        codigo: 0,
-        descricao: "",
-        precoCusto: 0,
-        precoVenda: 0,
-        qtdEstoque: 0,
-        urlImagem: "",
-        dataValidade: "",
-        categoria: {}
-    });
+    const[produto,setProduto]=useState({
+        codigo:0,
+        descricao:"",
+        precoCusto:0,
+        precoVenda:0,   
+        qtdEstoque:0,
+        urlImagem:"",
+        dtValidade:"",
+        categoria:{},
+        fornecedor:{}
+      });
 
     // useEffect(()=>{
     //     consultarProduto().then((lista)=>{
@@ -40,14 +41,14 @@ export default function TelaProduto(props){
                 {
                     exibirTabela ? <TabelaProdutos  //listaDeProdutos={listaDeProdutos} 
                                                     // setListaDeProdutos={setListaDeProdutos}
-                                                    setProdutoSelecionado={setProdutoSelecionado}
+                                                    setProduto={setProduto}
                                                     setModoEdicao={setModoEdicao}
                                                     setExibirTabela={setExibirTabela}/> : 
                                     <CadProduto //listaDeProdutos={listaDeProdutos} 
                                                 //setListaDeProdutos={setListaDeProdutos} 
                                                 setExibirTabela={setExibirTabela}
-                                                produtoSelecionado={produtoSelecionado}
-                                                setProdutoSelecionado={setProdutoSelecionado}
+                                                produto={produto}
+                                                setProduto={setProduto}
                                                 modoEdicao={modoEdicao} 
                                                 setModoEdicao={setModoEdicao}/>
                 }

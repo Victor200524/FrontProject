@@ -13,13 +13,16 @@ export async function gravarProduto(Produto){
     return resultado;
 }
 
-export async function alterarProduto(Produto){
-    const resposta = await fetch(urlBase+ "/" + Produto.codigo,{
-        'method':"PUT",
-        'headers': { 
-            'Content-Type':"application/json"
+export async function alterarProduto(Produto) {
+    const resposta = await fetch(`${urlBase}/${Produto.codigo}`, {
+        method: "PUT",
+        headers: { 
+            "Content-Type": "application/json"
         },
-        'body': JSON.stringify(Produto)
+        body: JSON.stringify({
+            ...Produto, 
+            dataValidade: new Date(Produto.dataValidade).toISOString() // Certifica-se de enviar a data em formato ISO.
+        })
     });
     const resultado = await resposta.json();
     return resultado;
